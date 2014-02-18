@@ -21,3 +21,6 @@ Thumbs.db
 ehthumbs.db
 
 Desktop.ini
+
+## VIM
+*.swp
