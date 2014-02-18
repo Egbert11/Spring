@@ -1,0 +1,71 @@
+/* header */
+#header {
+    position: relative;
+    height: 40px;
+}
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+}
+
+/* content */
+/* tabnav */
+ul.tabnav li {
+    float: left;
+    display: inline;
+    margin-left: 8px;
+}
+.tabnav li a {
+    background-color: #ccffcc;
+    border: 1px solid #66cc66;
+    color: #666;
+    display: block;
+    padding: 0 5px;
+    line-height: 20px;
+    font-weight: bold;
+    float: left;
+    text-decoration: none;
+}
+.tabnav li a.active,
+.tabnav li a:hover {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+    _position:relative;
+}
+#content .tabnav{
+    border-bottom: 1px solid #66cc66;
+    height: 21px;
+    _overflow:hidden;
+}
+
+/* panels */
+.panels {
+    widows: 100%;
+    height: 360px;
+    background: #ff0;
+}
+.panels .panel {
+    width:100%;
+    height: 100%;
+    display: none;
+}
+.panels .active {
+    display: block;
+}
+.panel p {
+    height: 5%;
+    width: 100%;
+    background: #00ff00;
+}
+.panel .task {
+    height: 60%;
+    width: 100%;
+    background: #ff0000;
+}
+.panel .ranks {
+    height: 35%;
+    width: 100%;
+    background: #00ffff;
+}

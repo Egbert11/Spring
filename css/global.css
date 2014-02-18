@@ -1,0 +1,22 @@
+/* 全局global */
+* {
+    list-style-type: none;
+}
+
+body {
+    text-align: center;
+    font: normal normal 12px "宋体";
+    color: #5280e7;
+}
+
+.ib {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+.wrapper {
+    width: 620px;
+    height: 460px;
+    margin: 0% auto;
+}
