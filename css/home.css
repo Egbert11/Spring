@@ -1,29 +1,33 @@
 /* header */
-#header {
-    position: relative;
-    height: 40px;
-}
-.close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: inline-block;
-}
+/*#header {*/
+    /*position: relative;*/
+    /*height: 40px;*/
+/*}*/
+/*.close {*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 0;*/
+    /*display: inline-block;*/
+/*}*/
 
 /* content */
+#content {
+    height: 100%;
+    position: relative;
+}
+
 /* tabnav */
 ul.tabnav li {
     float: left;
     display: inline;
-    margin-left: 8px;
 }
 .tabnav li a {
     background-color: #ccffcc;
-    border: 1px solid #66cc66;
     color: #666;
     display: block;
-    padding: 0 5px;
-    line-height: 20px;
+    height: 50px;
+    width: 183px;
+    line-height: 50px;
     font-weight: bold;
     float: left;
     text-decoration: none;
@@ -36,15 +40,29 @@ ul.tabnav li {
 }
 #content .tabnav{
     border-bottom: 1px solid #66cc66;
-    height: 21px;
+    height: 51px;
     _overflow:hidden;
+}
+
+/*arrow*/
+.top-arrow {
+    display: block;
+    overflow: hidden;
+    width: 0px;
+    height: 0px;
+    border: 6px solid #ffffd6;
+    border-color: #ffffd6 #b0ed39;
+    border-width: 0 6px 6px 6px;
+    position: absolute;
+    top: 45px;
+    left: 85px;
 }
 
 /* panels */
 .panels {
     widows: 100%;
-    height: 360px;
-    background: #ff0;
+    height: 418px;
+    background: #ffffd8;
 }
 .panels .panel {
     width:100%;
@@ -54,18 +72,36 @@ ul.tabnav li {
 .panels .active {
     display: block;
 }
-.panel p {
-    height: 5%;
-    width: 100%;
-    background: #00ff00;
-}
+
+/*task*/
 .panel .task {
-    height: 60%;
+    height: 300px;
     width: 100%;
-    background: #ff0000;
+    background: #ffffd8;
 }
+
+/*ranks*/
 .panel .ranks {
-    height: 35%;
+    height: 119px;
     width: 100%;
     background: #00ffff;
+}
+.ranks .rank {
+    width: 246px;
+    height: 100%;
+    background: #00ffff;
+    float: left;
+}
+
+/*tip*/
+div.tip{
+    position: absolute; /*leave this and next 3 values alone*/
+    z-index: 1000;
+    left: -1000px;
+    top: -1000px;
+    background: #272727;
+    border: 10px solid black;
+    color: white;
+    padding: 3px;
+    width: 250px; /*width of tooltip*/
 }
