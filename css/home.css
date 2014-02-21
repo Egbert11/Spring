@@ -1,15 +1,3 @@
-/* header */
-/*#header {*/
-    /*position: relative;*/
-    /*height: 40px;*/
-/*}*/
-/*.close {*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*right: 0;*/
-    /*display: inline-block;*/
-/*}*/
-
 /* content */
 #content {
     height: 100%;
@@ -25,13 +13,50 @@ ul.tabnav li {
     background-color: #ccffcc;
     color: #666;
     display: block;
-    height: 50px;
-    width: 183px;
-    line-height: 50px;
+    height: 48px;
+    width: 184px;
+    line-height: 48px;
     font-weight: bold;
     float: left;
     text-decoration: none;
 }
+a#meet {
+    background: url(../image/sprite-trans.png?eee) no-repeat 0 0;
+}
+a#meet:hover {
+    background: url(../image/sprite-trans.png?eee) no-repeat -188px 0;
+}
+a#meet:active {
+    background: url(../image/sprite-trans.png?eee) no-repeat -379px 0;
+}
+a#season {
+    background: url(../image/sprite-trans.png?eee) no-repeat 0 -58px;
+}
+a#season:hover {
+    background: url(../image/sprite-trans.png?eee) no-repeat -189px -58px;
+}
+a#season:active {
+    background: url(../image/sprite-trans.png?eee) no-repeat -379px -58px;
+}
+a#dating {
+    background: url(../image/sprite-trans.png?eee) no-repeat 0 -116px;
+}
+a#dating:hover {
+    background: url(../image/sprite-trans.png?eee) no-repeat -189px -116px;
+}
+a#dating:active {
+    background: url(../image/sprite-trans.png?eee) no-repeat -379px -116px;
+}
+a#total-rank {
+    background: url(../image/sprite-trans.png?eee) no-repeat 0 -174px;
+}
+a#total-rank:hover {
+    background: url(../image/sprite-trans.png?eee) no-repeat -189px -174px;
+}
+a#total-rank:active {
+    background: url(../image/sprite-trans.png?eee) no-repeat -379px -174px;
+}
+
 .tabnav li a.active,
 .tabnav li a:hover {
     background-color: #ffffff;
@@ -39,8 +64,7 @@ ul.tabnav li {
     _position:relative;
 }
 #content .tabnav{
-    border-bottom: 1px solid #66cc66;
-    height: 51px;
+    height: 48px;
     _overflow:hidden;
 }
 
@@ -48,21 +72,19 @@ ul.tabnav li {
 .top-arrow {
     display: block;
     overflow: hidden;
-    width: 0px;
-    height: 0px;
-    border: 6px solid #ffffd6;
-    border-color: #ffffd6 #b0ed39;
-    border-width: 0 6px 6px 6px;
+    width: 17px;
+    height: 8px;
     position: absolute;
-    top: 45px;
-    left: 85px;
+    top: 40px;
+    left: 83px;
+    background: url(../image/sprite-trans.png?eee) no-repeat -380px -230px;
 }
 
 /* panels */
 .panels {
-    widows: 100%;
-    height: 418px;
-    background: #ffffd8;
+    width: 100%;
+    height: 419px;
+    background: url(../image/background.png?eee) no-repeat #ffffd8;
 }
 .panels .panel {
     width:100%;
@@ -75,23 +97,134 @@ ul.tabnav li {
 
 /*task*/
 .panel .task {
-    height: 300px;
+    height: 288px;
     width: 100%;
-    background: #ffffd8;
+    background: url(../image/meeting.png?eee) no-repeat;
+}
+
+/* panel-middle */
+.panel-middle {
+    height: 20px;
+    width: 97%;
+    background-color: #ecfaba;
+    border-top: 1px solid #dbed9a;
+    font-weight: bold;
+    color: #2e5305;
+    text-align: left;
+    line-height: 20px;
+    padding-left: 3%;
+}
+.panel-middle > span {
+    color: #69a41d;
+    font-weight: normal;
+    float: right;
+    padding-right: 20px;
 }
 
 /*ranks*/
 .panel .ranks {
-    height: 119px;
+    height: 110px;
     width: 100%;
-    background: #00ffff;
 }
 .ranks .rank {
-    width: 246px;
+    border-right: 1px solid #e4eccd;
+    width: 244px;
     height: 100%;
-    background: #00ffff;
     float: left;
+    position: relative;
 }
+.rank ul {
+    position: relative;
+    top: 20px;
+    left: 7px;
+    padding: 0 20px 10px 10px;
+}
+.rank li {
+    height: 26px;
+    line-height: 26px;
+}
+.img-no1 {
+    width: 24px;
+    height: 24px;
+    background: url(../image/sprite-trans.png?eee) no-repeat -3px -300px;
+    position: relative;
+    left: -20px;
+}
+.img-no2 {
+    width: 24px;
+    height: 24px;
+    background: url(../image/sprite-trans.png?eee) no-repeat -35px -300px;
+    position: relative;
+    left: -20px;
+}
+.img-no3 {
+    width: 24px;
+    height: 24px;
+    background: url(../image/sprite-trans.png?eee) no-repeat -67px -300px;
+    position: relative;
+    left: -20px;
+}
+.no1 {
+    color: #d62870;
+    vertical-align: top;
+    left: -15px;
+    position: relative;
+}
+.no2, .no3 {
+    color: #69a41d;
+    vertical-align: top;
+    left: -15px;
+    position: relative;
+}
+.number {
+    float: right;
+}
+.star {
+    background: url(../image/sprite-trans.png?eee) no-repeat -67px -275px;
+    width: 20px;
+    height: 20px;
+    float: right;
+    position: relative;
+    right: 10px;
+}
+.sweet {
+    background: url(../image/sprite-trans.png?eee) no-repeat -37px -275px;
+    width: 20px;
+    height: 20px;
+    float: right;
+    position: relative;
+    right: 10px;
+}
+.king {
+    background: url(../image/sprite-trans.png?eee) no-repeat -6px -275px;
+    width: 20px;
+    height: 20px;
+    float: right;
+    position: relative;
+    right: 10px;
+}
+#zuijia .label{
+    width: 70px;
+    height: 42px;
+    background: url(../image/sprite-trans.png?eee) no-repeat -2px -229px;
+    position: absolute;
+    z-index: 2;
+}
+#renqi .label{
+    width: 70px;
+    height: 42px;
+    background: url(../image/sprite-trans.png?eee) no-repeat -77px -229px;
+    position: absolute;
+    z-index: 2;
+}
+#jiechu .label{
+    width: 70px;
+    height: 42px;
+    background: url(../image/sprite-trans.png?eee) no-repeat -148px -229px;
+    position: absolute;
+    z-index: 2;
+}
+
 
 /*tip*/
 div.tip{

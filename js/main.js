@@ -11,7 +11,7 @@ $(function() {
         $(".panels>[name='" + tabName + "']").addClass("active");
 
         // 显示当前panel上方的箭头
-        var x = $(this).position().left + 85;
+        var x = $(this).position().left + 83;
         $(".top-arrow").css({'left': x+'px'});
 	});
 });
