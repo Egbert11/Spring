@@ -225,7 +225,90 @@ a#total-rank:active {
     z-index: 2;
 }
 
-
+/* total-rank */
+.total-rank-header {
+    width: 100%;
+    height: 60px;
+    background: url(../image/header-bg.png?eee) repeat-x;
+}
+.total-rank-header ul{
+    height: 100%;
+    padding-left: 15px;
+}
+.total-rank-header ul li {
+    float: left;
+    width: 136px;
+    height: 32px;
+    line-height: 32px;
+    padding: 14px 3px;
+}
+.total-rank-header ul li a {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    color: #2e5305;
+}
+.total-rank-header ul li a.active,
+.total-rank-header ul li a:hover {
+    background: url(../image/sprite-trans.png?eee) no-repeat -229px -229px;
+    color: #ffffff;
+}
+.total-rank-panel {
+    width: 100%;
+    height: 302px;
+    border-top: 1px solid #c3df8f;
+    border-bottom: 1px solid #ecfaba;
+}
+.total-rank-panel > div {
+    display: none;
+}
+.total-rank-panel > div.active {
+    height: 100%;
+    display: block;
+}
+.panel-left {
+    width: 332px;
+    height: 100%;
+    border-right: 1px solid #c3df8f;
+}
+.panel-right {
+    width: 411px;
+    height: 100%;
+}
+.panel-left ul {
+    padding-top: 28px;
+    height: 240%;
+}
+.panel-left ul li {
+    height: 48px;
+}
+.panel-left ul li a {
+    height: 48px;
+    line-height: 48px;
+    text-align: left;
+}
+.panel-left ul li a.active,
+.panel-left ul li a:hover {
+    background: url(../image/sprite-trans.png?eee) no-repeat -231px -274px;
+    width: 332px;
+    z-index: 2;
+}
+.panel-left-a > span.icon{
+    left: 30px;
+    top: 8px;
+}
+.panel-left-a > span.field{
+    left: 35px;
+}
+.panel-left-a > span.star{
+    right: 35px;
+    top: 13px;
+}
+.panel-left-a > span.number{
+    position: relative;
+    right: 25px;
+}
 /*tip*/
 div.tip{
     position: absolute; /*leave this and next 3 values alone*/

@@ -14,5 +14,13 @@ $(function() {
         var x = $(this).position().left + 83;
         $(".top-arrow").css({'left': x+'px'});
 	});
+
+    // 总榜tab
+    var total_rank = $(".total-rank-header ul");
+    total_rank.find("li a").bind("click", function(){
+        // 从列表项中添加或删除active类
+        total_rank.find("li a").removeClass("active");
+        $(this).addClass("active");
+    });
 });
 
