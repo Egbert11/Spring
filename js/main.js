@@ -14,7 +14,16 @@ $(function() {
         var x = $(this).position().left + 83;
         $(".top-arrow").css({'left': x+'px'});
 	});
-
+	
+	// 鼠标停留在圆圈上方显示提示框
+	var circle = $(".task-dating");
+	circle.find("li.circle-candy").mouseover(function() {
+		circle.find("li ul").css("display","block");
+	});
+	circle.find("li.circle-candy").mouseout(function() {
+		circle.find("li ul").css("display","none");
+	});
+	
     // 总榜tab
     var total_rank = $(".total-rank-header ul");
     total_rank.find("li a").bind("click", function(){

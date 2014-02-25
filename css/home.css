@@ -126,19 +126,16 @@ a#total-rank:active {
 	position:relative;
 }
 
-a#319:hover{
-	
-}
 
 .task-dating li ul{
 	display:none;
 	
 }
 
-.task-dating li:hover ul{
+/*.task-dating li:hover ul{
 	display:block;
 	
-}
+}*/
 
 .task-dating .rank-jiechu {
     border-right: 1px solid #e4eccd;
