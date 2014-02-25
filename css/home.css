@@ -96,10 +96,75 @@ a#total-rank:active {
 }
 
 /*task*/
-.panel .task {
+.panel .task-meeting {
     height: 288px;
     width: 100%;
     background: url(../image/meeting.png?eee) no-repeat;
+}
+
+.panel .task-dating {
+    height: 288px;
+    width: 100%;
+    background: url(../image/dating.png?eee) no-repeat;
+}
+
+.circle-candy {
+	background: url(../image/sprite-trans.png?eee) no-repeat -3px -330px; 
+	width:122px; 
+	height:122px; 
+	position:relative;
+}
+
+.circle-processing {
+	background: url(../image/sprite-trans.png?eee) no-repeat -127px -330px; 
+	width:122px; 
+	height:122px; 
+	position:relative;
+}
+
+a#319 hover{
+	
+}
+
+.task-dating li ul{
+	display:none;
+	
+}
+
+.task-dating li:hover ul{
+	display:block;
+	
+}
+
+.task-dating .rank-jiechu {
+    border-right: 1px solid #e4eccd;
+    width: 250px;
+    height: 150px;
+    float: left;
+    position: relative;
+	left: 72px;
+	top: 77px;	
+	background: url(../image/tip.png?eee) no-repeat;
+}
+
+.task-dating .rank-jiechu ul {
+	position: relative;
+    top: 45px;
+    left: -5px;
+    padding: 0 20px 10px 10px;
+}
+
+.task-dating .rank-jiechu li {
+    height: 26px;
+    line-height: 26px;
+}
+
+.task-dating .rank-jiechu .fontStyle {
+	position: relative;
+	left: -50px;
+	top: 7px;
+    color: #69a41d;
+    font-weight: normal;
 }
 
 /* panel-middle */
