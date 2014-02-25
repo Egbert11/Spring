@@ -7,6 +7,7 @@ body {
     text-align: center;
     font: normal normal 12px "宋体";
     color: #2e5305;
+    overflow: hidden;
 }
 
 .ib {
