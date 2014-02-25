@@ -96,10 +96,20 @@ a#total-rank:active {
 }
 
 /*task*/
-.panel .task {
+.panel .meet-task {
     height: 288px;
     width: 100%;
     background: url(../image/meeting.png?eee) no-repeat;
+}
+.panel .season-task {
+    height: 288px;
+    width: 100%;
+    background: url(../image/season.png?eee) no-repeat;
+}
+.panel .dating-task {
+    height: 288px;
+    width: 100%;
+    background: url(../image/dating.png?eee) no-repeat;
 }
 
 /* panel-middle */
@@ -164,6 +174,20 @@ a#total-rank:active {
     position: relative;
     left: -20px;
 }
+.img-no4 {
+    width: 24px;
+    height: 24px;
+    background: url(../image/sprite-trans.png?eee) no-repeat -100px -300px;
+    position: relative;
+    left: -20px;
+}
+.img-no5 {
+    width: 24px;
+    height: 24px;
+    background: url(../image/sprite-trans.png?eee) no-repeat -129px -300px;
+    position: relative;
+    left: -20px;
+}
 .no1 {
     color: #d62870;
     vertical-align: top;
@@ -203,21 +227,21 @@ a#total-rank:active {
     position: relative;
     right: 10px;
 }
-#zuijia .label{
+.zuijia .label{
     width: 70px;
     height: 42px;
     background: url(../image/sprite-trans.png?eee) no-repeat -2px -229px;
     position: absolute;
     z-index: 2;
 }
-#renqi .label{
+.renqi .label{
     width: 70px;
     height: 42px;
     background: url(../image/sprite-trans.png?eee) no-repeat -77px -229px;
     position: absolute;
     z-index: 2;
 }
-#jiechu .label{
+.jiechu .label{
     width: 70px;
     height: 42px;
     background: url(../image/sprite-trans.png?eee) no-repeat -148px -229px;
@@ -262,23 +286,29 @@ a#total-rank:active {
 }
 .total-rank-panel > div {
     display: none;
+    position: relative;
 }
 .total-rank-panel > div.active {
     height: 100%;
     display: block;
+    position: relative;
 }
 .panel-left {
-    width: 332px;
+    width: 324px;
     height: 100%;
     border-right: 1px solid #c3df8f;
+    position: absolute;
+    z-index: 2;
 }
 .panel-right {
     width: 411px;
     height: 100%;
+    float: right;
+    position: relative;
 }
 .panel-left ul {
     padding-top: 28px;
-    height: 240%;
+    height: 240px;
 }
 .panel-left ul li {
     height: 48px;
@@ -290,7 +320,7 @@ a#total-rank:active {
 }
 .panel-left ul li a.active,
 .panel-left ul li a:hover {
-    background: url(../image/sprite-trans.png?eee) no-repeat -231px -274px;
+    background: url(../image/sprite-trans.png?eee) no-repeat -231px -276px;
     width: 332px;
     z-index: 2;
 }
@@ -308,6 +338,104 @@ a#total-rank:active {
 .panel-left-a > span.number{
     position: relative;
     right: 25px;
+}
+div.nav4 .panel-right .bg-panel-right,
+div.nav2 .panel-right .bg-panel-right,
+div.nav1 .panel-right .bg-panel-right{
+    background: url(../image/small-ranking.png) no-repeat;
+    width: 343px;
+    height: 125px;
+    position: relative;
+    top: 134px;
+    left: 33px;
+}
+.exponent1 {
+    width: 132px;
+    height: 78px;
+    position: absolute;
+    left: 139px;
+    top: 47px;
+}
+.exponent2 {
+    width: 112px;
+    height: 78px;
+    position: absolute;
+    left: 20px;
+    top: 95px;
+}
+.exponent3 {
+    width: 112px;
+    height: 78px;
+    position: absolute;
+    left: 278px;
+    top: 112px;
+}
+.nav5 .exponent1,
+.nav3 .exponent1 {
+    width: 132px;
+    height: 78px;
+    position: absolute;
+    left: 315px;
+    top: 70px;
+}
+.nav5 .exponent2,
+.nav3 .exponent2 {
+    width: 112px;
+    height: 78px;
+    position: absolute;
+    left: 200px;
+    top: 118px;
+}
+.nav5 .exponent3,
+.nav3 .exponent3 {
+    width: 112px;
+    height: 78px;
+    position: absolute;
+    left: 450px;
+    top: 135px;
+}
+.nav5 .exponent4,
+.nav3 .exponent4 {
+    width: 112px;
+    height: 78px;
+    position: absolute;
+    left: 90px;
+    top: 165px;
+}
+.nav5 .exponent5,
+.nav3 .exponent5 {
+    width: 112px;
+    height: 78px;
+    position: absolute;
+    left: 553px;
+    top: 178px;
+}
+div.icon-cc {
+    background: url(../image/sprite-trans.png?eee) no-repeat -158px -279px;
+    width: 40px;
+    height: 40px;
+    margin: 2px auto;
+}
+span.img-heart {
+    background: url(../image/sprite-trans.png?eee) no-repeat -99px -279px;
+    width: 18px;
+    height: 14px;
+}
+.total-rank-footer {
+    height: 55px;
+    line-height: 55px;
+}
+.bg-nav3 {
+    width: 553px;
+    height: 125px;
+    background: url(../image/ranking.png?eee) no-repeat;
+    position: relative;
+    top: 150px;
+    left: 105px;
+}
+span.ranking {
+    color: #d62870;
+    font-weight: bold;
 }
 /*tip*/
 div.tip{

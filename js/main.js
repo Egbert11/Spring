@@ -21,6 +21,20 @@ $(function() {
         // 从列表项中添加或删除active类
         total_rank.find("li a").removeClass("active");
         $(this).addClass("active");
+
+        // 给total-rank-panel添加或删除active类
+        var tabName = $(this).attr("id");
+        $(".total-rank-panel>[class]").removeClass("active");
+        $(".total-rank-panel>[class='" + tabName + "']").addClass("active");
+    });
+
+    var leftPanel = $('.total-rank-panel .active .panel-left ul');
+    leftPanel.find("li a").bind("click", function(){
+       leftPanel.find("li a").removeClass("active");
+        $(this).addClass('active');
+
+        // to-do
+        // refresh right panel
     });
 });
 
