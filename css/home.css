@@ -172,7 +172,7 @@ a.circle-candy7 {
     line-height: 20px;
     padding-left: 3%;
 }
-.panel-middle > span {
+.panel-middle span {
     color: #69a41d;
     font-weight: normal;
     float: right;
@@ -200,53 +200,69 @@ a.circle-candy7 {
 .rank li {
     height: 26px;
     line-height: 26px;
+    text-align: left;
+    position: relative;
 }
 .img-no1 {
     width: 24px;
     height: 24px;
     background: url(../image/sprite-trans.png?eee) no-repeat -3px -300px;
     position: relative;
-    left: -20px;
+    left: 7px;
+    top: 0px;
+    float: left;
 }
 .img-no2 {
     width: 24px;
     height: 24px;
     background: url(../image/sprite-trans.png?eee) no-repeat -35px -300px;
     position: relative;
-    left: -20px;
+    left: 7px;
+    top: 0px;
+    float: left;
 }
 .img-no3 {
     width: 24px;
     height: 24px;
     background: url(../image/sprite-trans.png?eee) no-repeat -67px -300px;
     position: relative;
-    left: -20px;
+    left: 7px;
+    top: 0px;
+    float: left;
 }
 .img-no4 {
     width: 24px;
     height: 24px;
     background: url(../image/sprite-trans.png?eee) no-repeat -100px -300px;
     position: relative;
-    left: -20px;
+    left: 7px;
+    top: 0px;
+    float: left;
 }
 .img-no5 {
     width: 24px;
     height: 24px;
     background: url(../image/sprite-trans.png?eee) no-repeat -129px -300px;
     position: relative;
-    left: -20px;
+    left: 7px;
+    top: 0px;
+    float: left;
 }
 .no1 {
     color: #d62870;
     vertical-align: top;
-    left: -15px;
+    left: 20px;
+    top: 0px;
     position: relative;
+    float: left;
 }
 .no2, .no3 {
     color: #69a41d;
     vertical-align: top;
-    left: -15px;
+    left: 20px;
+    top: 0px;
     position: relative;
+    float: left;
 }
 .number {
     float: right;
@@ -258,6 +274,7 @@ a.circle-candy7 {
     float: right;
     position: relative;
     right: 10px;
+    top: 2px;
 }
 .sweet {
     background: url(../image/sprite-trans.png?eee) no-repeat -37px -275px;
@@ -266,6 +283,7 @@ a.circle-candy7 {
     float: right;
     position: relative;
     right: 10px;
+    top: 2px;
 }
 .king {
     background: url(../image/sprite-trans.png?eee) no-repeat -6px -275px;
@@ -274,6 +292,7 @@ a.circle-candy7 {
     float: right;
     position: relative;
     right: 10px;
+    top: 2px;
 }
 .zuijia .label{
     width: 70px;
@@ -281,6 +300,8 @@ a.circle-candy7 {
     background: url(../image/sprite-trans.png?eee) no-repeat -2px -229px;
     position: absolute;
     z-index: 2;
+    top: 0px;
+    left: 0px;
 }
 .renqi .label{
     width: 70px;
@@ -288,6 +309,8 @@ a.circle-candy7 {
     background: url(../image/sprite-trans.png?eee) no-repeat -77px -229px;
     position: absolute;
     z-index: 2;
+    top: 0px;
+    left: 0px;
 }
 .jiechu .label{
     width: 70px;
@@ -295,6 +318,8 @@ a.circle-candy7 {
     background: url(../image/sprite-trans.png?eee) no-repeat -148px -229px;
     position: absolute;
     z-index: 2;
+    top: 0px;
+    left: 0px;
 }
 
 /* total-rank */
@@ -332,20 +357,34 @@ a.circle-candy7 {
     border-top: 1px solid #c3df8f;
     border-bottom: 1px solid #ecfaba;
 }
-.total-rank-panel > div {
+.total-rank-panel div.nav1,
+.total-rank-panel div.nav2,
+.total-rank-panel div.nav3,
+.total-rank-panel div.nav4,
+.total-rank-panel div.nav5 {
     display: none;
     position: relative;
 }
-.total-rank-panel > div.active {
+.total-rank-panel div.active {
     height: 100%;
     display: block;
     position: relative;
 }
-.panel-left {
+.panel-left-outer {
     width: 324px;
     height: 100%;
     border-right: 1px solid #c3df8f;
     position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+}
+.panel-left {
+    width: 324px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
     z-index: 2;
 }
 .panel-right {
@@ -353,10 +392,12 @@ a.circle-candy7 {
     height: 100%;
     float: right;
     position: relative;
+    text-align: left;
 }
 .panel-left ul {
     padding-top: 28px;
     height: 240px;
+    width: 324px;
 }
 .panel-left ul li {
     height: 48px;
@@ -372,18 +413,18 @@ a.circle-candy7 {
     width: 332px;
     z-index: 2;
 }
-.panel-left-a > span.icon{
+.panel-left-a span.icon{
     left: 30px;
     top: 8px;
 }
-.panel-left-a > span.field{
+.panel-left-a span.field{
     left: 35px;
 }
-.panel-left-a > span.star{
+.panel-left-a span.star{
     right: 35px;
     top: 13px;
 }
-.panel-left-a > span.number{
+.panel-left-a span.number{
     position: relative;
     right: 25px;
 }
@@ -396,6 +437,7 @@ div.nav1 .panel-right .bg-panel-right{
     position: relative;
     top: 134px;
     left: 33px;
+    text-align: left;
 }
 .exponent1 {
     width: 132px;
@@ -403,6 +445,7 @@ div.nav1 .panel-right .bg-panel-right{
     position: absolute;
     left: 139px;
     top: 47px;
+    text-align: center;
 }
 .exponent2 {
     width: 112px;
@@ -410,6 +453,7 @@ div.nav1 .panel-right .bg-panel-right{
     position: absolute;
     left: 20px;
     top: 95px;
+    text-align: center;
 }
 .exponent3 {
     width: 112px;
@@ -417,6 +461,7 @@ div.nav1 .panel-right .bg-panel-right{
     position: absolute;
     left: 278px;
     top: 112px;
+    text-align: center;
 }
 .nav5 .exponent1,
 .nav3 .exponent1 {
@@ -425,6 +470,7 @@ div.nav1 .panel-right .bg-panel-right{
     position: absolute;
     left: 315px;
     top: 70px;
+    text-align: center;
 }
 .nav5 .exponent2,
 .nav3 .exponent2 {
@@ -433,6 +479,7 @@ div.nav1 .panel-right .bg-panel-right{
     position: absolute;
     left: 200px;
     top: 118px;
+    text-align: center;
 }
 .nav5 .exponent3,
 .nav3 .exponent3 {
@@ -441,6 +488,7 @@ div.nav1 .panel-right .bg-panel-right{
     position: absolute;
     left: 450px;
     top: 135px;
+    text-align: center;
 }
 .nav5 .exponent4,
 .nav3 .exponent4 {
@@ -449,6 +497,7 @@ div.nav1 .panel-right .bg-panel-right{
     position: absolute;
     left: 90px;
     top: 165px;
+    text-align: center;
 }
 .nav5 .exponent5,
 .nav3 .exponent5 {
@@ -457,6 +506,7 @@ div.nav1 .panel-right .bg-panel-right{
     position: absolute;
     left: 553px;
     top: 178px;
+    text-align: center;
 }
 div.icon-cc {
     background: url(../image/sprite-trans.png?eee) no-repeat -158px -279px;
@@ -480,6 +530,7 @@ span.img-heart {
     position: relative;
     top: 150px;
     left: 105px;
+    *left: 15px;
 }
 span.ranking {
     color: #d62870;
@@ -504,6 +555,7 @@ span.ranking {
 .tip li {
     height: 26px;
     line-height: 26px;
+    position: relative;
 }
 .tip .fontStyle {
     position: relative;
@@ -511,4 +563,11 @@ span.ranking {
     top: 7px;
     color: #69a41d;
     font-weight: normal;
+}
+/* task-status */
+p.task-status {
+    position: absolute;
+    font-weight: bold;
+    padding: 10px 10px;
+    z-index: 5;
 }
