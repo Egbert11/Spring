@@ -22,7 +22,14 @@ $(function() {
 	});
 
     $('#meet').trigger("click");
-
+	
+	// 解决初次加载总榜点击最佳主播无效的问题
+	var firstLeftPanel = $('.total-rank-panel .active .panel-left ul');
+	firstLeftPanel.find("li a").bind("click", function(){
+		firstLeftPanel.find("li a").removeClass("active");
+		$(this).addClass("active");
+});
+	
     // 总榜tab
     var total_rank = $(".total-rank-header ul");
     total_rank.find("li a").bind("click", function(){
@@ -38,13 +45,15 @@ $(function() {
         var leftPanel = $('.total-rank-panel .active .panel-left ul');
         leftPanel.find("li a").bind("click", function(){
             leftPanel.find("li a").removeClass("active");
-            $(this).addClass('active');
+            $(this).addClass("active");
 
             // to-do
             // refresh right panel
         });
     });
 });
+
+	
 
 function refreshTip() {
    // 圈圈任务的提示框
@@ -76,7 +85,13 @@ function refreshTip() {
                     break;
             }
             $(".tip").show();
-            return false;
+			$(".tip").hover(function(){
+				$(".tip").show();
+			},
+			function(){
+				$(".tip").hide();
+				return false;
+			});
         },
         function(){
             $(".tip").hide();
