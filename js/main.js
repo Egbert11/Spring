@@ -4,7 +4,9 @@ $(function() {
 		// 从列表项中添加或删除active类
 		element.find("li a").removeClass("active");
 		$(this).addClass("active");
-
+		$(this).animate({opacity:'0.7'},'slow');
+		$(this).animate({opacity:'1'},'slow');
+		
         // 给panel添加或删除active类
         var tabName = $(this).attr("name");
         $(".panels>[name]").removeClass("active");
@@ -18,7 +20,10 @@ $(function() {
             x = $(this).position().left + 83;
         $(".top-arrow").css({'left': x+'px'});
 
-        if ($(this).attr("id") == 'total-rank') $('p.task-status').css({'display':'none'});
+        if ($(this).attr("id") == 'total-rank') 
+			$('p.task-status').css({'display':'none'});
+		else
+			$('p.task-status').css({'display':'block'});
         refreshTip();
 	});
 
