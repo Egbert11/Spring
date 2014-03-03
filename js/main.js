@@ -204,41 +204,76 @@ $(function() {
 		firstLeftPanel.find("li a").removeClass("active");
 		$(this).addClass("active");
     });
-
+	
+	
+	
+	
     // 总榜tab
     var total_rank = $(".total-rank-header ul");
+			//默认点击第一项（活动最佳主播）
+		//$(".total-rank-header ul li a#nav1").trigger("click");
     total_rank.find("li a").bind("click", function(){
         // 从列表项中添加或删除active类
         total_rank.find("li a").removeClass("active");
         $(this).addClass("active");
-
         // 给total-rank-panel添加或删除active类
         var tabName = $(this).attr("id");
         // 获取所点击的榜的数据
-        var data;
+        var data, path;
         switch (tabName){
             case 'nav1':
-                data = {topic_id: 1232001};break;
+                data = {topic_id: 1232001};
+				path = "zuiJiaZhuPoRanking/";
+				break;
             case 'nav2':
-                data = {topic_id: 1232001};break;
+                data = {topic_id: 1232001};
+				path = "get_reqizhupo_ranking/";
+				break;
             case 'nav3':
-                data = {topic_id: 1232001};break;
+                data = {topic_id: 1232001};
+				path = "get_zuiqianfensi_ranking/";
+				break;
             case 'nav4':
-                data = {topic_id: 1232001};break;
+                data = {topic_id: 1232001};
+				path = "get_zuiJiaZhuPo_all_ranking/";
+				break;
             case 'nav5':
-                data = {topic_id: 1232001};break;
+                data = {topic_id: 1232001};
+				path = "get_zuiqianfensi_all_ranking/";
+				break;
         }
+		var users;
         $.ajax({
             type: 'GET',
-            url: 'http://192.168.11.42:9292/marchactive/zuiJiaZhuPoRanking/',
+            url: 'http://192.168.11.42:9292/marchactive/'+path,
             data: data,
             dataType: 'json',
             success: function(data){
-
+				users = data.users;
+				// nav1,nav2,nav4
+				var left = $('.total-rank-panel .active .panel-left ul');
+				left.find("li a#1 span.no1").text(users[0].nickName);
+				left.find("li a#2 span.no2").text(users[1].nickName);
+				left.find("li a#3 span.no3").text(users[2].nickName);
+				left.find("li a#4 span.no1").text(users[3].nickName);
+				left.find("li a#5 span.no1").text(users[4].nickName);
+				left.find("li a#1 span.number").text(users[0].level);
+				left.find("li a#2 span.number").text(users[1].level);
+				left.find("li a#3 span.number").text(users[2].level);
+				left.find("li a#4 span.number").text(users[3].level);
+				left.find("li a#5 span.number").text(users[4].level);
+				// nav3, nav5
+				var rank = $('.total-rank-panel div.active');
+				var friend = data.users;
+				for(var i = 1; i <= friend.length; i++)
+				{
+					rank.find('.exponent'+i+' p').text(friend[i-1].playerName);
+					rank.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
+				}
             },
             error: function(){}
         });
-
+		
         $(".total-rank-panel>[class]").removeClass("active");
         $(".total-rank-panel>[class='" + tabName + "']").addClass("active");
 
@@ -246,22 +281,58 @@ $(function() {
         leftPanel.find("li a").bind("click", function(){
             leftPanel.find("li a").removeClass("active");
             $(this).addClass("active");
-
+			//默认点击列表第一项
+			/*$(".total-rank-panel ul li a#1").trigger("click");*/
+			var path;
+			//点击主播加载主播甜蜜指数排行
+			switch (tabName){
+				case 'nav1':
+					data['uid'] = users[0].uid;
+					path = "getAuthFriends/";
+					break;
+				case 'nav2':
+					data['uid'] = users[1].uid;
+					path = "getAuthFriends/";
+					break;
+				case 'nav3':
+					data['uid'] = users[2].uid;
+					path = "getAuthFriends/";
+					break;
+				case 'nav4':
+					data = {uid: users[3].uid};
+					path = "getAuthAllFriends/";
+					break;
+				case 'nav5':
+					data['uid'] = users[4].uid;
+					path = "getAuthFriends/";
+					break;
+			}
             // refresh right panel
             $.ajax({
                 type: 'GET',
-                url: '',
-                data: {},
+                url: 'http://192.168.11.42:9292/marchactive/'+path,
+                data: data,
                 dataType: 'json',
                 success: function(data){
-
+					var friend = data.users;
+					var rightPanel = $(".total-rank-panel .active .panel-right");
+					for(var i = 1; i <= friend.length; i++)
+					{
+						rightPanel.find('.exponent'+i+' p').text(friend[i-1].playerName);
+						rightPanel.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
+					}
                 },
                 error: function(error){
 
                 }
             });
         });
+		
     });
+	
+	//默认点击第一项（活动最佳主播）
+	$(".total-rank-header ul li a#nav1").trigger("click");
+	$(".total-rank-panel .active ul li a#1").trigger("click");
 });
 
 
