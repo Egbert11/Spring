@@ -35,8 +35,6 @@ $(function() {
 	var year = currentDate.getFullYear();  //当前年份：2014
 	var month = currentDate.getMonth();    //当前月份：0-11
 	var day = currentDate.getDate();       //当前日期：1-31
-	day = 21;
-	month = 2;
 	var meeting = $(".task-meeting");
 	var season = $(".task-season");
 	var dating = $(".task-dating");
