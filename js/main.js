@@ -32,7 +32,7 @@ $(function() {
 	firstLeftPanel.find("li a").bind("click", function(){
 		firstLeftPanel.find("li a").removeClass("active");
 		$(this).addClass("active");
-});
+    });
 	
     // 总榜tab
     var total_rank = $(".total-rank-header ul");
@@ -51,13 +51,23 @@ $(function() {
             leftPanel.find("li a").removeClass("active");
             $(this).addClass("active");
 
-            // to-do
             // refresh right panel
+            $.ajax({
+                type: 'GET',
+                url: '',
+                data: {},
+                dataType: 'json',
+                success: function(data){
+
+                },
+                error: function(error){
+
+                }
+            });
         });
     });
 });
 
-	
 
 function refreshTip() {
    // 圈圈任务的提示框
