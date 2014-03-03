@@ -5,13 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8">
     <title>三月春天之约</title>
-    <script language="javascript" type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script language="javascript" type="text/javascript" src="js/main.js"></script>
+    <script language="javascript" type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/static/js/main.js"></script>
     <!--[if lte IE 6]>
     <link rel="stylesheet" type="text/css" href="css/ie6.css"/>
     <script language="javascript" type=”text/javascript” src="js/iepngfix_tilebg.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
     <!--[if IE 7]>
     <script language="javascript" type="text/javascript" src="js/IE7.js"></script>
     <![endif]-->
@@ -27,281 +27,112 @@
         </ul>
         <div class="top-arrow"></div>
         <div class="panels">
-            <div class="tip">
-                <span class="fontStyle">主播当天获得了<span style="color: #d62870;">XX</span>颗星星</span>
-                <ul>
-                    <li>
-                        <span class="img-no1 ib"></span>
-                        <span class="no1 ib">梦幻520水饺幽幽</span>
-                        <span class="number ib">99999</span>
-                        <span class="king ib"></span>
-                    </li>
-                    <li>
-                        <span class="img-no2 ib"></span>
-                        <span class="no2 ib">梦幻520水饺幽幽</span>
-                        <span class="number ib">99999</span>
-                        <span class="king ib"></span>
-                    </li>
-                    <li>
-                        <span class="img-no3 ib"></span>
-                        <span class="no3 ib">梦幻520水饺幽幽</span>
-                        <span class="number ib">99999</span>
-                        <span class="king ib"></span>
-                    </li>
-                </ul>
-            </div>
+            {% if day_star %}
+                {% for day, level in day_star.iteritems()%}
+                <div id="dpac_{{ day }}" class="tip" style="display:none;">
+                    <span class="fontStyle">主播当天获得了<span style="color: #d62870;">{{level}}</span>颗星星</span>
+                    <ul>
+                        {% if day_player_contribute_rank and day in day_player_contribute_rank %}
+                        {% for info in day_player_contribute_rank[day] %}
+                        <li>
+                            <span class="img-no1 ib"></span>
+                            <span class="no1 ib">{{info[0]}}</span>
+                            <span class="number ib">x{{info[1]}}</span>
+                            <span class="king ib"></span>
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endfor %}
+            {% endif %}
+
             <p class="task-status">
-                [梦幻520水饺 幽梦幻饺]的每日任务状态:
+                [{{uid}}]的每日任务状态:
             </p>
-            <div class="panel active" name="meet">
+
+            {% for i in range(0, 3) %}
+                {% if 0 == i %}
+                <div class="panel active" name="meet">
+                {% endif %}
+                {% if 1 == i %}
+                <div class="panel" name="season">
+                {% endif %}
+                {% if 2 == i %}
+                <div class="panel" name="dating">
+                    {% endif %}
                 <div class="task-meeting">
-                    <a class="circle-candy1" name="1"></a>
-                    <a class="circle-candy2" name="2"></a>
-                    <a class="circle-candy3" name="3"></a>
-                    <a class="circle-candy4" name="4"></a>
-                    <a class="circle-candy5" name="5"></a>
-                    <a class="circle-candy6" name="6"></a>
-                    <a class="circle-candy7" name="7"></a>
+                {% for j in range(i * 7, i * 7 + 7) %}
+                {% if query_days[j] > endday %}
+                    <a class="circle-candy{{j%7 + 1}}" name="dpac_{{query_days[j]}}"></a>
+                {% endif %}
+                {% if query_days[j] < endday %}
+                    <a class="circle-candy{{j%7 + 1}} finishing" name="dpac_{{query_days[j]}}"  onclick="showPlayerContribute('dpac_{{query_days[j]}}')"></a>
+                {% endif %}
+                {% if query_days[j] == endday %}
+                    <a class="circle-candy{{j%7 + 1}} processing" name="dpac_{{query_days[j]}}"  onclick="showPlayerContribute('dpac_{{query_days[j]}}')"></a>
+                {% endif %}
+                {% endfor %}
                 </div>
-                <div class="panel-middle"><span>更新时间:2014/03/24/10:00</span>3月24日 100房间排行榜</div>
+
+                <div class="panel-middle"><span>更新时间:{{update_time}}</span>{{showday_str}} {{topcid}}房间排行榜</div>
+
                 <div class="ranks">
                     <div class="zuijia rank">
                         <div class="label"></div>
-                        <ul>
-                            <li>
-                                <span class="img-no1 ib"></span>
-                                <span class="no1 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="star ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no2 ib"></span>
-                                <span class="no2 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="star ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no3 ib"></span>
-                                <span class="no3 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="star ib"></span>
-                            </li>
-                        </ul>
+                        {% if day_auth_rank %}
+                        {% for day, rank_list in day_auth_rank.iteritems()%}
+                            <ul class="dpac_{{day}}" {% if day != showday %} style="display:none;" {% endif %}>
+                                {% for info in rank_list %}
+                                <li>
+                                    <span class="img-no1 ib"></span>
+                                    <span class="no1 ib">{{info[0]}}</span>
+                                    <span class="number ib">x{{info[1]}}</span>
+                                    <span class="star ib"></span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                        {% endif %}
                     </div>
                     <div class="renqi rank">
                         <div class="label"></div>
-                        <ul>
-                            <li>
-                                <span class="img-no1 ib"></span>
-                                <span class="no1 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="sweet ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no2 ib"></span>
-                                <span class="no2 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="sweet ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no3 ib"></span>
-                                <span class="no3 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="sweet ib"></span>
-                            </li>
-                        </ul>
+                        {% if day_auth_popu_rank %}
+                            {% for day, pop_rank_list in day_auth_popu_rank.iteritems()%}
+                                <ul class="dpac_{{day}}" {% if day != showday %} style="display:none;" {% endif %}>
+                                    {% for info in pop_rank_list %}
+                                    <li>
+                                        <span class="img-no1 ib"></span>
+                                        <span class="no1 ib">{{info[0]}}</span>
+                                        <span class="number ib">x{{info[1]}}</span>
+                                        <span class="sweet ib"></span>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                     <div class="jiechu rank">
                         <div class="label"></div>
-                        <ul>
-                            <li>
-                                <span class="img-no1 ib"></span>
-                                <span class="no1 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="king ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no2 ib"></span>
-                                <span class="no2 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="king ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no3 ib"></span>
-                                <span class="no3 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="king ib"></span>
-                            </li>
-                        </ul>
+                        {% if day_player_room_contribute %}
+                            {% for day, room_contribute_rank_list in day_player_room_contribute.iteritems()%}
+                                <ul class="dpac_{{day}}" {% if day != showday %} style="display:none;" {% endif%}>
+                                    {% for info in room_contribute_rank_list %}
+                                    <li>
+                                        <span class="img-no1 ib"></span>
+                                        <span class="no1 ib">{{info[0]}}</span>
+                                        <span class="number ib">x{{info[1]}}</span>
+                                        <span class="king ib"></span>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endfor %}
+                        {% endif %}
                     </div>
                 </div>
-            </div>
-            <div class="panel" name="season">
-                <div class="task-season">
-                    <a class="circle-candy1" name="1"></a>
-                    <a class="circle-candy2" name="2"></a>
-                    <a class="circle-candy3" name="3"></a>
-                    <a class="circle-candy4" name="4"></a>
-                    <a class="circle-candy5" name="5"></a>
-                    <a class="circle-candy6" name="6"></a>
-                    <a class="circle-candy7" name="7"></a>
                 </div>
-                <div class="panel-middle"><span>更新时间:2014/03/24/10:00</span>3月24日 100房间排行榜</div>
-                <div class="ranks">
-                    <div class="zuijia rank">
-                        <div class="label"></div>
-                        <ul>
-                            <li>
-                                <span class="img-no1 ib"></span>
-                                <span class="no1 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="star ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no2 ib"></span>
-                                <span class="no2 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="star ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no3 ib"></span>
-                                <span class="no3 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="star ib"></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="renqi rank">
-                        <div class="label"></div>
-                        <ul>
-                            <li>
-                                <span class="img-no1 ib"></span>
-                                <span class="no1 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="sweet ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no2 ib"></span>
-                                <span class="no2 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="sweet ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no3 ib"></span>
-                                <span class="no3 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="sweet ib"></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="jiechu rank">
-                        <div class="label"></div>
-                        <ul>
-                            <li>
-                                <span class="img-no1 ib"></span>
-                                <span class="no1 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="king ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no2 ib"></span>
-                                <span class="no2 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="king ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no3 ib"></span>
-                                <span class="no3 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="king ib"></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="panel" name="dating">
-                <div class="task-dating">
-                    <a class="circle-candy1" name="1"></a>
-                    <a class="circle-candy2" name="2"></a>
-                    <a class="circle-candy3" name="3"></a>
-                    <a class="circle-candy4" name="4"></a>
-                    <a class="circle-candy5" name="5"></a>
-                    <a class="circle-candy6" name="6"></a>
-                    <a class="circle-candy7" name="7"></a>
-                </div>
-                <div class="panel-middle"><span>更新时间:2014/03/24/10:00</span>3月24日 100房间排行榜</div>
-                <div class="ranks">
-                    <div class="zuijia rank">
-                        <div class="label"></div>
-                        <ul>
-                            <li>
-                                <span class="img-no1 ib"></span>
-                                <span class="no1 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="star ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no2 ib"></span>
-                                <span class="no2 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="star ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no3 ib"></span>
-                                <span class="no3 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="star ib"></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="renqi rank">
-                        <div class="label"></div>
-                        <ul>
-                            <li>
-                                <span class="img-no1 ib"></span>
-                                <span class="no1 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="sweet ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no2 ib"></span>
-                                <span class="no2 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="sweet ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no3 ib"></span>
-                                <span class="no3 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="sweet ib"></span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="jiechu rank">
-                        <div class="label"></div>
-                        <ul>
-                            <li>
-                                <span class="img-no1 ib"></span>
-                                <span class="no1 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="king ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no2 ib"></span>
-                                <span class="no2 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="king ib"></span>
-                            </li>
-                            <li>
-                                <span class="img-no3 ib"></span>
-                                <span class="no3 ib">梦幻520水饺幽幽</span>
-                                <span class="number ib">x99</span>
-                                <span class="king ib"></span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+
             <div class="panel" name="total-rank">
                 <div class="total-rank-header">
                     <ul>

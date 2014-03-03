@@ -245,42 +245,53 @@ function refreshTip() {
     var active_panel = $("div.panels > div.active");
     active_panel.find("a.finishing").hover(
         function(){
-            var whichCircle = $(this).attr('name');
+            var whichCircle = $(this).attr('class').split(' ')[0];
+            var circleId = $(this).attr('name');
             switch(whichCircle){
-                case "1":
-                    $(".tip").css({'left': '100px','top': '127px'});
+                case "circle-candy1":
+                    $("#"+circleId).css({'left': '100px','top': '127px'});
                     break;
-                case "2":
-                    $(".tip").css({'left': '200px','top': '207px'});
+                case "circle-candy2":
+                    $("#"+circleId).css({'left': '200px','top': '207px'});
                     break;
-                case "3":
-                    $(".tip").css({'left': '305px','top': '135px'});
+                case "circle-candy3":
+                    $("#"+circleId).css({'left': '305px','top': '135px'});
                     break;
-                case "4":
-                    $(".tip").css({'left': '405px','top': '205px'});
+                case "circle-candy4":
+                    $("#"+circleId).css({'left': '405px','top': '205px'});
                     break;
-                case "5":
-                    $(".tip").css({'left': '475px','top': '95px'});
+                case "circle-candy5":
+                    $("#"+circleId).css({'left': '475px','top': '95px'});
                     break;
-                case "6":
-                    $(".tip").css({'left': '295px','top': '200px'});
+                case "circle-candy6":
+                    $("#"+circleId).css({'left': '295px','top': '200px'});
                     break;
-                case "7":
-                    $(".tip").css({'left': '395px','top': '120px'});
+                case "circle-candy7":
+                    $("#"+circleId).css({'left': '395px','top': '120px'});
                     break;
             }
-            $(".tip").show();
-			$(".tip").hover(function(){
-				$(".tip").show();
+            $("#"+circleId).show();
+			$("#"+circleId).hover(function(){
+				$("#"+circleId).show();
 			},
 			function(){
-				$(".tip").hide();
+				$("#"+circleId).hide();
 				return false;
 			});
         },
         function(){
-            $(".tip").hide();
+            var circleId = $(this).attr('name');
+            $("#"+circleId).hide();
             return false;
         }
     );
+}
+
+// 点击圈圈，显示已经完成任务和正在进行任务的贡献榜
+function showPlayerContribute(day){
+    $(".zuijia").find("ul").css({'display':'none'});
+    $(".renqi").find("ul").css({'display':'none'});
+    $(".jiechu").find("ul").css({'display':'none'});
+    // 显示当前圈圈的最佳主播 人气主播 杰出主播排行榜
+    $(".ranks").find("ul."+day).css({'display':'block'});
 }
