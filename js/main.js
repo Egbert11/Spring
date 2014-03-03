@@ -214,6 +214,31 @@ $(function() {
 
         // 给total-rank-panel添加或删除active类
         var tabName = $(this).attr("id");
+        // 获取所点击的榜的数据
+        var data;
+        switch (tabName){
+            case 'nav1':
+                data = {topic_id: 1232001};break;
+            case 'nav2':
+                data = {topic_id: 1232001};break;
+            case 'nav3':
+                data = {topic_id: 1232001};break;
+            case 'nav4':
+                data = {topic_id: 1232001};break;
+            case 'nav5':
+                data = {topic_id: 1232001};break;
+        }
+        $.ajax({
+            type: 'GET',
+            url: 'http://192.168.11.42:9292/marchactive/zuiJiaZhuPoRanking/',
+            data: data,
+            dataType: 'json',
+            success: function(data){
+
+            },
+            error: function(){}
+        });
+
         $(".total-rank-panel>[class]").removeClass("active");
         $(".total-rank-panel>[class='" + tabName + "']").addClass("active");
 
