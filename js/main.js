@@ -18,7 +18,10 @@ $(function() {
             x = $(this).position().left + 83;
         $(".top-arrow").css({'left': x+'px'});
 
-        if ($(this).attr("id") == 'total-rank') $('p.task-status').css({'display':'none'});
+        if ($(this).attr("id") == 'total-rank')
+            $('p.task-status').css({'display':'none'});
+        else
+            $('p.task-status').css({'display':'block'});
         refreshTip();
 	});
 

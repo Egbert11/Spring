@@ -101,19 +101,16 @@ a#total-rank:active {
     height: 288px;
     width: 100%;
     background: url(../image/meeting.png?eee) no-repeat;
-    position: relative;
 }
 .panel .task-season {
     height: 288px;
     width: 100%;
     background: url(../image/season.png?eee) no-repeat;
-    position: relative;
 }
 .panel .task-dating {
     height: 288px;
     width: 100%;
     background: url(../image/dating.png?eee) no-repeat;
-    position: relative;
 }
 
 /* circle-candy */
@@ -257,12 +254,15 @@ a.circle-candy7 {
     float: left;
 }
 .no2, .no3 {
-    color: #69a41d;
+    color: #b618ff;
     vertical-align: top;
     left: 20px;
     top: 0px;
     position: relative;
     float: left;
+}
+.no2 {
+    color: #0b51ef;
 }
 .number {
     float: right;
