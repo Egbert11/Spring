@@ -67,10 +67,10 @@
                     <a class="circle-candy{{j%7 + 1}}" name="dpac_{{query_days[j]}}"></a>
                 {% endif %}
                 {% if query_days[j] < endday %}
-                    <a class="circle-candy{{j%7 + 1}} finishing" name="dpac_{{query_days[j]}}"  onclick="showPlayerContribute('dpac_{{query_days[j]}}')"></a>
+                    <a class="circle-candy{{j%7 + 1}} finishing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('dpac_{{query_days[j]}}')"></a>
                 {% endif %}
                 {% if query_days[j] == endday %}
-                    <a class="circle-candy{{j%7 + 1}} processing" name="dpac_{{query_days[j]}}"  onclick="showPlayerContribute('dpac_{{query_days[j]}}')"></a>
+                    <a class="circle-candy{{j%7 + 1}} processing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('dpac_{{query_days[j]}}')"></a>
                 {% endif %}
                 {% endfor %}
                 </div>
