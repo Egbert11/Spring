@@ -140,8 +140,9 @@ function fetchRankingLeftList(tabName, url){
             dataType: 'json',
             success: function(data){
                 if(data.code == 0){
-                    if(tabName == 'nav1' || tabName == 'nav2' || tabName == 'nav4'){
+                    if(tabName == 'nav1' || tabName == 'nav4'){
                         $('.total-rank-panel .nav1').addClass('active');
+                        $('.total-rank-panel .nav2').removeClass('active');
                         $('.total-rank-panel .nav3').removeClass('active');
 
                         var parent = $('.total-rank-panel .nav1 .panel-left ul');
@@ -170,12 +171,26 @@ function fetchRankingLeftList(tabName, url){
                         });
                         // 默认获取第一项列表的数据
                         var uid = $('.total-rank-panel .active .panel-left ul li a:first').attr('name');
+                        $('.total-rank-panel .active .panel-left ul li a:first').addClass('active');
                         fetchRankingRightListByUid(tabName, uid);
+                    }else if(tabName == 'nav2'){
+                        // nav2
+                        $('.total-rank-panel .nav1').removeClass('active');
+                        $('.total-rank-panel .nav3').removeClass('active');
+                        $('.total-rank-panel .nav2').addClass('active');
+
+                        var rank = $('.total-rank-panel .nav2 ');
+                        var friend = data.users;
+                        for(var i = 1; i <= friend.length; i++)
+                        {
+                            rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 16));
+                            rank.find('.exponent'+i+' span.exp').text(friend[i-1].level);
+                        }
                     }else{
                         // nav3, nav5
                         $('.total-rank-panel .nav1').removeClass('active');
+                        $('.total-rank-panel .nav2').removeClass('active');
                         $('.total-rank-panel .nav3').addClass('active');
-
                         var rank = $('.total-rank-panel .nav3 ');
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
@@ -292,15 +307,4 @@ $(function() {
         // 获取所点击的榜的数据
         fetchRankingLeftList(tabName, path);
     });
-
-    /*var leftPanel = $('.panel-left ul');
-    leftPanel.find("li a").bind("click", function(){
-        leftPanel.find("li a").removeClass("active");
-        $(this).addClass("active");
-
-        var tabName = $('.total-rank-header ul li a.active');
-        var uid = '';
-        //点击主播加载主播甜蜜指数排行
-        fetchRankingRightListByUid(tabName, uid);
-    });*/
 });
