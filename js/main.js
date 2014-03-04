@@ -106,14 +106,14 @@ function fetchRankingLeftList(tabName, url){
             dataType: 'json',
             success: function(data){
                 if(data.code == 0){
-                    if(tabName == 'nav1' || tabName == 'nav2' || tabName == 'nav3'){
+                    if(tabName == 'nav1' || tabName == 'nav2' || tabName == 'nav4'){
                         $('.total-rank-panel .nav1').addClass('active');
                         $('.total-rank-panel .nav3').removeClass('active');
 
                         var parent = $('.total-rank-panel .nav1 .panel-left ul');
                         parent.empty();
                         $.each(data.users, function(index, user){
-                            var li = $('<li><a href="#" class="panel-left-a"></a></li>');
+                            var li = $('<li><a href="#" class="panel-left-a" title="'+user.nickName+'" name="'+user.uid+'"></a></li>');
                             if(index == 0){
                                 li.find('a').append('<span class="icon img-no1 ib"></span>');
                                 li.find('a').append('<span class="number ib">'+ user.level+'</span>');
@@ -133,16 +133,18 @@ function fetchRankingLeftList(tabName, url){
                                 li.find('a').append('<span class="icon img-no4 ib"></span>');
                                 li.find('a').append('<span class="number ib">'+ user.level+'</span>');
                                 li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no4 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="field no1 ib">'+user.nickName+'</span>');
                             }else if(index == 4){
                                 li.find('a').append('<span class="icon img-no5 ib"></span>');
                                 li.find('a').append('<span class="number ib">'+ user.level+'</span>');
                                 li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no5 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="field no1 ib">'+user.nickName+'</span>');
                             }
                             parent.append(li);
                         });
-
+                        // 默认获取第一项列表的数据
+                        var uid = $('.total-rank-panel .active .panel-left ul li a')[0].attr('name');
+                        fetchRankingRightListByUid(tabName, uid);
                     }else{
                         // nav3, nav5
                         $('.total-rank-panel .nav1').removeClass('active');
@@ -152,7 +154,7 @@ function fetchRankingLeftList(tabName, url){
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
                         {
-                            rank.find('.exponent'+i+' p').text(friend[i-1].playerName);
+                            rank.find('.exponent'+i+' p').text(friend[i-1].nickName);
                             rank.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                         }
                     }
@@ -172,17 +174,19 @@ function fetchRankingRightListByUid(tabName, uid){
         data: data,
         dataType: 'json',
         success: function(data){
-            var friend = data.users;
-            var rightPanel = $(".total-rank-panel .active .panel-right");
-            for(var i = 1; i <= friend.length; i++)
-            {
-                rightPanel.find('.exponent'+i+' p').text(friend[i-1].playerName);
-                rightPanel.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
+            if(data.code == 0){
+                var friend = data.users;
+                var rightPanel = $(".total-rank-panel .active .panel-right");
+                for(var i = 1; i <= friend.length; i++)
+                {
+                    rightPanel.find('.exponent'+i+' p').text(friend[i-1].playerName);
+                    rightPanel.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
+                }
+            }else{
+                console.log("fetching data by uid "+uid+" error --> "+data.reason);
             }
         },
-        error: function(error){
-            console.log("fetching "+tabName+" data error --> "+data.reason);
-        }
+        error: function(error){}
     });
 }
 
@@ -208,8 +212,10 @@ $(function() {
             x = $(this).position().left + 83;
         $(".top-arrow").css({'left': x+'px'});
 
-        if ($(this).attr("id") == 'total-rank')
+        if ($(this).attr("id") == 'total-rank'){
             $('p.task-status').css({'display':'none'});
+            fetchRankingLeftList('nav1', getRequestUrlByTabName('nav1'));
+        }
         else
             $('p.task-status').css({'display':'block'});
         refreshTip();
