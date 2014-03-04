@@ -576,3 +576,10 @@ p.task-status {
     top: 89px;
     left: 18px;
 }
+
+.panel-middle .date {
+    color: #2e5305;
+    float: left;
+    padding-right: 10px;
+    font-weight: bold;
+}

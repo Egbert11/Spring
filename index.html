@@ -17,6 +17,7 @@
     <![endif]-->
 </head>
 <body>
+<input type="hidden" id="c_showday" value="{{showday}}">
 <div class="wrapper">
     <div id="content">
         <ul class="tabnav nostyle">
@@ -41,7 +42,8 @@
                             <span class="king ib"></span>
                         </li>
                         {% endfor %}
-                        {% else %}
+                        {% endif %}
+                        {% if not day_player_contribute_rank and day not in day_player_contribute_rank %}
                         <li style="line-height: 78px; color: #69a41d;">暂时无人上榜</li>
                         {% endif %}
                     </ul>
@@ -88,7 +90,9 @@
                     <span>更新时间:{{update_time}}</span>
                     {% if day_in_str %}
                         {% for key, day_str in day_in_str.iteritems() %}
-                            <span id="day_str_{{key}}" {% if showday != key %}style="color: #2e5305; float: left; padding-right: 10px;font-weight: bold;display:none;"{% endif %}>{{day_str}} </span>
+                            <span id="day_str_{{key}}" class="date"
+                            {% if showday != key %}style="display:none;"{% endif %}>{{day_str}}
+                            </span>
                         {% endfor %}
                     {% endif %}
                     {{topcid}}房间排行榜

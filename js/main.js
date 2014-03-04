@@ -73,6 +73,9 @@ function showPlayerContribute(day){
     $("#c_showday").val(day);
 }
 
+// 初始化配置
+var config = initConfig();
+
 function fetchRankingLeftList(tabName, url){
     $.ajax({
             type: 'GET',
@@ -145,9 +148,6 @@ function fetchRankingRightListByUid(uid){
 }
 
 $(function() {
-
-    // 初始化配置
-    var config = initConfig();
 
 	var element = $(".tabnav");
 	element.find("li a").bind("click", function() {
@@ -226,7 +226,6 @@ $(function() {
             leftPanel.find("li a").removeClass("active");
             $(this).addClass("active");
 			//默认点击列表第一项
-			/*$(".total-rank-panel ul li a#1").trigger("click");*/
 			var path;
 			//点击主播加载主播甜蜜指数排行
 			switch (tabName){
