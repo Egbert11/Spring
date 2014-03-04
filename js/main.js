@@ -117,6 +117,16 @@ function showPlayerContribute(day){
     $("#c_showday").val(day);
 }
 
+function liconcate(el, imgno, level, fieldno, username, tabName){
+    el.find('a').append('<span class="icon img-'+ imgno +' ib"></span>');
+    el.find('a').append('<span class="number ib">'+ level +'</span>');
+    if(tabName == 'nav2')
+        el.find('a').append('<span class="sweet ib"></span>');
+    else
+        el.find('a').append('<span class="star ib"></span>');
+    el.find('a').append('<span class="field '+ fieldno + ' ib">'+username+'</span>');
+}
+
 function fetchRankingLeftList(tabName, url){
     $.ajax({
             type: 'GET',
@@ -135,30 +145,15 @@ function fetchRankingLeftList(tabName, url){
                             var li = $('<li><a href="#" class="panel-left-a" title="'+user.nickName+'" name="'+user.uid+'"></a></li>');
                             var username = mySubStr(user.nickName, 16);
                             if(index == 0){
-                                li.find('a').append('<span class="icon img-no1 ib"></span>');
-                                li.find('a').append('<span class="number ib">'+ user.level+'</span>');
-                                li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no1 ib">'+username+'</span>');
+                                liconcate(li, 'no1', 'no1', user.level, username, tabName);
                             }else if(index == 1){
-                                li.find('a').append('<span class="icon img-no2 ib"></span>');
-                                li.find('a').append('<span class="number ib">'+ user.level+'</span>');
-                                li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no2 ib">'+username+'</span>');
+                                liconcate(li, 'no2', 'no2', user.level, username, tabName);
                             }else if(index == 2){
-                                li.find('a').append('<span class="icon img-no3 ib"></span>');
-                                li.find('a').append('<span class="number ib">'+ user.level+'</span>');
-                                li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no3 ib">'+username+'</span>');
+                                liconcate(li, 'no3', 'no3', user.level, username, tabName);
                             }else if(index == 3){
-                                li.find('a').append('<span class="icon img-no4 ib"></span>');
-                                li.find('a').append('<span class="number ib">'+ user.level+'</span>');
-                                li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no1 ib">'+username+'</span>');
+                                liconcate(li, 'no4', 'no1', user.level, username, tabName);
                             }else if(index == 4){
-                                li.find('a').append('<span class="icon img-no5 ib"></span>');
-                                li.find('a').append('<span class="number ib">'+ user.level+'</span>');
-                                li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no1 ib">'+username+'</span>');
+                                liconcate(li, 'no5', 'no1', user.level, username, tabName);
                             }
                             parent.append(li);
                         });
@@ -245,17 +240,10 @@ $(function() {
         refreshTip();
 	});
 
-    $('#meet').trigger("click");
-	
+    // 显示当前阶段
+	showCurrentPeroid();
 	refreshTip();
 	
-	// 解决初次加载总榜点击最佳主播无效的问题
-	var firstLeftPanel = $('.total-rank-panel .active .panel-left ul');
-	firstLeftPanel.find("li a").bind("click", function(){
-		firstLeftPanel.find("li a").removeClass("active");
-		$(this).addClass("active");
-    });
-
     // 总榜tab
     var total_rank = $(".total-rank-header ul");
     total_rank.find("li a").bind("click", function(){
