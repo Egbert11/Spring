@@ -136,7 +136,7 @@ function fetchRankingLeftList(tabName, url){
     $.ajax({
             type: 'GET',
             url: url,
-            data: {topic_id: config.topic_id},
+            data: {topic_id: config.topic_id,time: new Date().getTime()},
             dataType: 'json',
             success: function(data){
                 if(data.code == 0){
@@ -211,7 +211,7 @@ function fetchRankingLeftList(tabName, url){
 
 function fetchRankingRightListByUid(tabName, uid){
     var url = getUidUrl();
-    var data = {uid: uid, topic_id:config.topic_id};
+    var data = {uid: uid, topic_id:config.topic_id, time: new Date().getTime()};
     $.ajax({
         type: 'GET',
         url: url,
