@@ -33,7 +33,7 @@
                 <div id="dpac_{{ day }}" class="tip" style="display:none;">
                     <span class="fontStyle">主播当天获得了<span style="color: #d62870;">{{level}}</span>颗星星</span>
                     <ul>
-                        {% if day_player_contribute_rank and day in day_player_contribute_rank %}
+                        {% if day_player_contribute_rank and day in day_player_contribute_rank and day_player_contribute_rank[day] %}
                         {% for info in day_player_contribute_rank[day] %}
                         <li>
                             <span class="img-no1 ib"></span>
@@ -42,8 +42,7 @@
                             <span class="king ib"></span>
                         </li>
                         {% endfor %}
-                        {% endif %}
-                        {% if not day_player_contribute_rank and day not in day_player_contribute_rank %}
+                        {% else %}
                         <li style="line-height: 78px; color: #69a41d;">暂时无人上榜</li>
                         {% endif %}
                     </ul>
@@ -104,7 +103,7 @@
                         {% if day_auth_rank %}
                             {% for j in range(i * 7, i * 7 + 7) %}
                                 <ul class="dpac_{{query_days[j]}}" {% if query_days[j] != showday %} style="display:none;" {% endif %}>
-                                    {% if query_days[j] in day_auth_rank %}
+                                    {% if query_days[j] in day_auth_rank and day_auth_rank[query_days[j]] %}
                                     {% for info in day_auth_rank[query_days[j]] %}
                                     <li>
                                         <span class="img-no1 ib"></span>
@@ -125,7 +124,7 @@
                         {% if day_auth_popu_rank %}
                             {% for j in range(i * 7, i * 7 + 7) %}
                                     <ul class="dpac_{{query_days[j]}}" {% if query_days[j] != showday %} style="display:none;" {% endif %}>
-                                        {% if query_days[j] in day_auth_popu_rank %}
+                                        {% if query_days[j] in day_auth_popu_rank and day_auth_popu_rank[query_days[j]] %}
                                         {% for info in day_auth_popu_rank[query_days[j]] %}
                                         <li>
                                             <span class="img-no1 ib"></span>
@@ -146,7 +145,7 @@
                         {% if day_player_room_contribute %}
                             {% for j in range(i * 7, i * 7 + 7) %}
                                     <ul class="dpac_{{query_days[j]}}" {% if query_days[j] != showday %} style="display:none;" {% endif %}>
-                                        {% if query_days[j] in day_player_room_contribute %}
+                                        {% if query_days[j] in day_player_room_contribute and day_player_room_contribute[query_days[j]] %}
                                         {% for info in day_player_room_contribute[query_days[j]] %}
                                         <li>
                                             <span class="img-no1 ib"></span>
