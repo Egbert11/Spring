@@ -48,7 +48,6 @@ function mySubStr(str, maxlen) {
     return str.substring(0, i);
 }
 
-/*
 function clickIE4() {
     if (event.button == 2) {
         return false;
@@ -78,4 +77,4 @@ if (document.layers) {
     document.onkeydown = OnDeny();
 }
 
-document.oncontextmenu = new Function("return false");*/
+document.oncontextmenu = new Function("return false");

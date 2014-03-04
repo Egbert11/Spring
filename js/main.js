@@ -221,6 +221,8 @@ function fetchRankingRightListByUid(tabName, uid){
             if(data.code == 0){
                 var friend = data.users;
                 var rightPanel = $(".total-rank-panel .active .panel-right");
+                rightPanel.find('p').empty();
+                rightPanel.find('span.exp').empty();
                 for(var i = 1; i <= friend.length; i++)
                 {
                     rightPanel.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 10));

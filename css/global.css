@@ -25,4 +25,5 @@ a {
     text-decoration: none;
     display: block;
     border: none;
+    blur: expression(this.blur());
 }
