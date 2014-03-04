@@ -69,17 +69,30 @@
                     <a class="circle-candy{{j%7 + 1}}" name="dpac_{{query_days[j]}}"></a>
                 {% endif %}
                 {% if query_days[j] < endday %}
-                    <a class="circle-candy{{j%7 + 1}} finishing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('dpac_{{query_days[j]}}')">
-                        <span class="star-number ib">55</span>
+                    <a class="circle-candy{{j%7 + 1}} finishing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('{{query_days[j]}}')">
+                        {% if day_star and query_days[j] in day_star %}
+                        <span class="star-number ib">{{day_star[query_days[j]]}}</span>
+                        {% endif %}
+                        {% if not day_star or query_days[j] not in day_star %}
+                        <span class="star-number ib">0</span>
+                        {% endif %}
                     </a>
                 {% endif %}
                 {% if query_days[j] == endday %}
-                    <a class="circle-candy{{j%7 + 1}} processing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('dpac_{{query_days[j]}}')"></a>
+                    <a class="circle-candy{{j%7 + 1}} processing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('{{query_days[j]}}')"></a>
                 {% endif %}
                 {% endfor %}
                 </div>
 
-                <div class="panel-middle"><span>更新时间:{{update_time}}</span>{{showday_str}} {{topcid}}房间排行榜</div>
+                <div class="panel-middle">
+                    <span>更新时间:{{update_time}}</span>
+                    {% if day_in_str %}
+                        {% for key, day_str in day_in_str.iteritems() %}
+                            <span id="day_str_{{key}}" {% if showday != key %}style="color: #2e5305; float: left; padding-right: 10px;font-weight: bold;display:none;"{% endif %}>{{day_str}} </span>
+                        {% endfor %}
+                    {% endif %}
+                    {{topcid}}房间排行榜
+                </div>
 
                 <div class="ranks">
                     <div class="zuijia rank">
@@ -167,41 +180,41 @@
                                 <li>
                                     <a href="#" class="panel-left-a active">
                                         <span class="icon img-no1 ib"></span>
-                                        <span class="number ib">x99</span>
+                                        <span class="number ib"></span>
                                         <span class="star ib"></span>
-                                        <span class="field no1 ib">梦幻520水饺幽幽</span>
+                                        <span class="field no1 ib"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="panel-left-a">
                                         <span class="icon img-no2 ib"></span>
-                                        <span class="number ib">x99</span>
+                                        <span class="number ib"></span>
                                         <span class="star ib"></span>
-                                        <span class="field no2 ib">梦幻520水饺幽幽</span>
+                                        <span class="field no2 ib"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="panel-left-a">
                                         <span class="icon img-no3 ib"></span>
-                                        <span class="number ib">x99</span>
+                                        <span class="number ib"></span>
                                         <span class="star ib"></span>
-                                        <span class="field no3 ib">梦幻520水饺幽幽</span>
+                                        <span class="field no3 ib"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="panel-left-a">
                                         <span class="icon img-no4 ib"></span>
-                                        <span class="number ib">x99</span>
+                                        <span class="number ib"></span>
                                         <span class="star ib"></span>
-                                        <span class="field no1 ib">梦幻520水饺幽幽</span>
+                                        <span class="field no1 ib"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#" class="panel-left-a">
                                         <span class="icon img-no5 ib"></span>
-                                        <span class="number ib">x99</span>
+                                        <span class="number ib"></span>
                                         <span class="star ib"></span>
-                                        <span class="field no1 ib">梦幻520水饺幽幽</span>
+                                        <span class="field no1 ib"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -212,7 +225,7 @@
                                 <p>梦幻520水饺幽梦幻</p>
                                 <div>
                                     <span class="ib img-heart"></span>
-                                    <span>x 6234567</span>
+                                    <span class="exp">x 6234567</span>
                                 </div>
                             </div>
                             <div class="exponent2">
@@ -220,7 +233,7 @@
                                 <p>梦幻520水饺幽梦幻</p>
                                 <div>
                                     <span class="ib img-heart"></span>
-                                    <span>x 6234567</span>
+                                    <span class="exp">x 6234567</span>
                                 </div>
                             </div>
                             <div class="exponent3">
@@ -228,81 +241,7 @@
                                 <p>梦幻520水饺幽梦幻</p>
                                 <div>
                                     <span class="ib img-heart"></span>
-                                    <span>x 6234567</span>
-                                </div>
-                            </div>
-                            <div class="bg-panel-right"></div>
-                        </div>
-                    </div>
-                    <div class="nav2">
-                        <div class="panel-left-outer"></div>
-                        <div class="panel-left">
-                            <ul>
-                                <li>
-                                    <a href="#" class="panel-left-a active">
-                                        <span class="icon img-no1 ib"></span>
-                                        <span class="number ib">x99</span>
-                                        <span class="star ib"></span>
-                                        <span class="field no1 ib">梦幻520水饺幽幽</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="panel-left-a">
-                                        <span class="icon img-no2 ib"></span>
-                                        <span class="number ib">x99</span>
-                                        <span class="star ib"></span>
-                                        <span class="field no2 ib">梦幻520水饺幽幽</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="panel-left-a">
-                                        <span class="icon img-no3 ib"></span>
-                                        <span class="number ib">x99</span>
-                                        <span class="star ib"></span>
-                                        <span class="field no3 ib">梦幻520水饺幽幽</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="panel-left-a">
-                                        <span class="icon img-no1 ib"></span>
-                                        <span class="number ib">x99</span>
-                                        <span class="star ib"></span>
-                                        <span class="field no1 ib">梦幻520水饺幽幽</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="panel-left-a">
-                                        <span class="icon img-no1 ib"></span>
-                                        <span class="number ib">x99</span>
-                                        <span class="star ib"></span>
-                                        <span class="field no1 ib">梦幻520水饺幽幽</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="panel-right">
-                            <div class="exponent1">
-                                <div class="icon-cc"></div>
-                                <p>梦幻520水饺幽梦幻</p>
-                                <div>
-                                    <span class="ib img-heart"></span>
-                                    <span>x 6234567</span>
-                                </div>
-                            </div>
-                            <div class="exponent2">
-                                <div class="icon-cc"></div>
-                                <p>梦幻520水饺幽梦幻</p>
-                                <div>
-                                    <span class="ib img-heart"></span>
-                                    <span>x 6234567</span>
-                                </div>
-                            </div>
-                            <div class="exponent3">
-                                <div class="icon-cc"></div>
-                                <p>梦幻520水饺幽梦幻</p>
-                                <div>
-                                    <span class="ib img-heart"></span>
-                                    <span>x 6234567</span>
+                                    <span class="exp">x 6234567</span>
                                 </div>
                             </div>
                             <div class="bg-panel-right"></div>
@@ -311,160 +250,42 @@
                     <div class="nav3">
                         <div class="exponent1">
                             <div class="icon-cc"></div>
-                            <p>梦幻520水饺幽梦幻</p>
+                            <p></p>
                             <div>
                                 <span class="ib img-heart"></span>
-                                <span>x 6234567</span>
+                                <span class="exp"></span>
                             </div>
                         </div>
                         <div class="exponent2">
                             <div class="icon-cc"></div>
-                            <p>梦幻520水饺幽梦幻</p>
+                            <p></p>
                             <div>
                                 <span class="ib img-heart"></span>
-                                <span>x 6234567</span>
+                                <span class="exp"></span>
                             </div>
                         </div>
                         <div class="exponent3">
                             <div class="icon-cc"></div>
-                            <p>梦幻520水饺幽梦幻</p>
+                            <p></p>
                             <div>
                                 <span class="ib img-heart"></span>
-                                <span>x 6234567</span>
+                                <span class="exp"></span>
                             </div>
                         </div>
                         <div class="exponent4">
                             <div class="icon-cc"></div>
-                            <p>梦幻520水饺幽梦幻</p>
+                            <p></p>
                             <div>
                                 <span class="ib img-heart"></span>
-                                <span>x 6234567</span>
+                                <span class="exp"></span>
                             </div>
                         </div>
                         <div class="exponent5">
                             <div class="icon-cc"></div>
-                            <p>梦幻520水饺幽梦幻</p>
+                            <p></p>
                             <div>
                                 <span class="ib img-heart"></span>
-                                <span>x 6234567</span>
-                            </div>
-                        </div>
-                        <div class="bg-nav3">
-                        </div>
-                    </div>
-                    <div class="nav4">
-                        <div class="panel-left-outer"></div>
-                        <div class="panel-left">
-                            <ul>
-                                <li>
-                                    <a href="#" class="panel-left-a active">
-                                        <span class="icon img-no1 ib"></span>
-                                        <span class="number ib">x99</span>
-                                        <span class="star ib"></span>
-                                        <span class="field no1 ib">梦幻520水饺幽幽</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="panel-left-a">
-                                        <span class="icon img-no2 ib"></span>
-                                        <span class="number ib">x99</span>
-                                        <span class="star ib"></span>
-                                        <span class="field no2 ib">梦幻520水饺幽幽</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="panel-left-a">
-                                        <span class="icon img-no3 ib"></span>
-                                        <span class="number ib">x99</span>
-                                        <span class="star ib"></span>
-                                        <span class="field no3 ib">梦幻520水饺幽幽</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="panel-left-a">
-                                        <span class="icon img-no1 ib"></span>
-                                        <span class="number ib">x99</span>
-                                        <span class="star ib"></span>
-                                        <span class="field no1 ib">梦幻520水饺幽幽</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="panel-left-a">
-                                        <span class="icon img-no1 ib"></span>
-                                        <span class="number ib">x99</span>
-                                        <span class="star ib"></span>
-                                        <span class="field no1 ib">梦幻520水饺幽幽</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="panel-right">
-                            <div class="exponent1">
-                                <div class="icon-cc"></div>
-                                <p>梦幻520水饺幽梦幻</p>
-                                <div>
-                                    <span class="ib img-heart"></span>
-                                    <span>x 6234567</span>
-                                </div>
-                            </div>
-                            <div class="exponent2">
-                                <div class="icon-cc"></div>
-                                <p>梦幻520水饺幽梦幻</p>
-                                <div>
-                                    <span class="ib img-heart"></span>
-                                    <span>x 6234567</span>
-                                </div>
-                            </div>
-                            <div class="exponent3">
-                                <div class="icon-cc"></div>
-                                <p>梦幻520水饺幽梦幻</p>
-                                <div>
-                                    <span class="ib img-heart"></span>
-                                    <span>x 6234567</span>
-                                </div>
-                            </div>
-                            <div class="bg-panel-right"></div>
-                        </div>
-                    </div>
-                    <div class="nav5">
-                        <div class="exponent1">
-                            <div class="icon-cc"></div>
-                            <p>梦幻520水饺幽梦幻</p>
-                            <div>
-                                <span class="ib img-heart"></span>
-                                <span>x 6234567</span>
-                            </div>
-                        </div>
-                        <div class="exponent2">
-                            <div class="icon-cc"></div>
-                            <p>梦幻520水饺幽梦幻</p>
-                            <div>
-                                <span class="ib img-heart"></span>
-                                <span>x 6234567</span>
-                            </div>
-                        </div>
-                        <div class="exponent3">
-                            <div class="icon-cc"></div>
-                            <p>梦幻520水饺幽梦幻</p>
-                            <div>
-                                <span class="ib img-heart"></span>
-                                <span>x 6234567</span>
-                            </div>
-                        </div>
-                        <div class="exponent4">
-                            <div class="icon-cc"></div>
-                            <p>梦幻520水饺幽梦幻</p>
-                            <div>
-                                <span class="ib img-heart"></span>
-                                <span>x 6234567</span>
-                            </div>
-                        </div>
-                        <div class="exponent5">
-                            <div class="icon-cc"></div>
-                            <p>梦幻520水饺幽梦幻</p>
-                            <div>
-                                <span class="ib img-heart"></span>
-                                <span>x 6234567</span>
+                                <span class="exp"></span>
                             </div>
                         </div>
                         <div class="bg-nav3">
