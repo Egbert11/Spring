@@ -433,7 +433,6 @@ a.circle-candy7 {
     right: 25px;
 }
 div.nav4 .panel-right .bg-panel-right,
-div.nav2 .panel-right .bg-panel-right,
 div.nav1 .panel-right .bg-panel-right{
     background: url(../image/small-ranking.png) no-repeat;
     width: 343px;
@@ -467,7 +466,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 112px;
     text-align: center;
 }
-.nav5 .exponent1,
+.nav2 .exponent1,
 .nav3 .exponent1 {
     width: 132px;
     height: 78px;
@@ -476,7 +475,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 70px;
     text-align: center;
 }
-.nav5 .exponent2,
+.nav2 .exponent2,
 .nav3 .exponent2 {
     width: 112px;
     height: 78px;
@@ -485,7 +484,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 118px;
     text-align: center;
 }
-.nav5 .exponent3,
+.nav2 .exponent3,
 .nav3 .exponent3 {
     width: 112px;
     height: 78px;
@@ -494,7 +493,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 135px;
     text-align: center;
 }
-.nav5 .exponent4,
+.nav2 .exponent4,
 .nav3 .exponent4 {
     width: 112px;
     height: 78px;
@@ -503,7 +502,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 165px;
     text-align: center;
 }
-.nav5 .exponent5,
+.nav2 .exponent5,
 .nav3 .exponent5 {
     width: 112px;
     height: 78px;
