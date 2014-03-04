@@ -1,12 +1,13 @@
 function initConfig(){
+    var topic_id = $('#topcid').attr('value');
     var config = {
-        topic_id:1232001,
+        topic_id:topic_id,
         baseUrl: 'http://192.168.11.42:8389/marchactive',
         zuijiazhubo: '/zuiJiaZhuPoRanking',
         renqizhubo: '/get_reqizhupo_ranking',
         zuiqiangfensi: '/get_zuiqianfensi_ranking',
         zuijiazhubozongbang: '/get_zuiJiaZhuPo_all_ranking',
-        fensigongxianbang: '/get_zuiqianfensi_all_ranking'
+        fensigongxianbang: '/get_zuiqianfensi_all_ranking',
         allfriends: '/getAuthAllFriends'
     }
     return config;
@@ -185,7 +186,7 @@ function fetchRankingRightListByUid(tabName, uid){
                 var rightPanel = $(".total-rank-panel .active .panel-right");
                 for(var i = 1; i <= friend.length; i++)
                 {
-                    rightPanel.find('.exponent'+i+' p').text(friend[i-1].playerName);
+                    rightPanel.find('.exponent'+i+' p').text(friend[i-1].nickName);
                     rightPanel.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                 }
             }else{
