@@ -18,6 +18,7 @@ function initConfig(){
 
 // 显示当前阶段
 function showCurrentPeroid(){
+    var showday = $('#c_showday').attr('value');
     var currentDate = new Date();
 	var day = currentDate.getDate();       //当前日期：1-31
     if(day <= 11){
@@ -26,6 +27,10 @@ function showCurrentPeroid(){
         $('#season').trigger("click");
     }else if(day <= 25){
         $('#dating').trigger("click");
+    }
+
+    if(currentDate.Format("yyyy-MM-dd") == showday){
+        showPlayerContribute(showday);
     }
 }
 
@@ -237,6 +242,31 @@ $(function() {
         }
         else
             $('p.task-status').css({'display':'block'});
+
+        var showday = $('#c_showday').attr('value');
+        var day = parseInt(showday.split('-')[2]);
+        if(day <= 11){
+            if(tabName == 'meet')
+                showPlayerContribute(showday);
+            else if(tabName == 'season')
+                showPlayerContribute('2014-03-12');
+            else if(tabName == 'dating')
+                showPlayerContribute('2014-03-19');
+        }else if(day <= 18){
+            if(tabName == 'meet')
+                showPlayerContribute('2014-03-05');
+            else if(tabName == 'season')
+                showPlayerContribute(showday);
+            else if(tabName == 'dating')
+                showPlayerContribute('2014-03-19');
+        }else if(day <= 25){
+            if(tabName == 'meet')
+                showPlayerContribute('2014-03-05');
+            else if(tabName == 'season')
+                showPlayerContribute('2014-03-12');
+            else if(tabName == 'dating')
+                showPlayerContribute(showday);
+        }
         refreshTip();
 	});
 
@@ -262,7 +292,7 @@ $(function() {
         leftPanel.find("li a").removeClass("active");
         $(this).addClass("active");
 
-        var tabName = $('.total-rank-header ul li a.active').attr("id");
+        var tabName = $('.total-rank-header ul li a.active');
         var uid = '';
         //点击主播加载主播甜蜜指数排行
         fetchRankingRightListByUid(tabName, uid);
