@@ -39,7 +39,7 @@
                         {% for info in day_player_contribute_rank[day] %}
                         <li>
                             <span class="img-no1 ib"></span>
-                            <span class="no1 ib">{{info[0]}}</span>
+                            <span class="no1 ib">{{info[0]|e|truncate(7,True)}}</span>
                             <span class="number ib">x{{info[1]}}</span>
                             <span class="king ib"></span>
                         </li>
@@ -118,7 +118,7 @@
                                     {% for info in day_auth_rank[query_days[j]] %}
                                     <li>
                                         <span class="img-no1 ib"></span>
-                                        <span class="no1 ib">{{info[0]}}</span>
+                                        <span class="no1 ib">{{info[0]|e|truncate(7, True)}}</span>
                                         <span class="number ib">x{{info[1]}}</span>
                                         <span class="star ib"></span>
                                     </li>
@@ -139,7 +139,7 @@
                                         {% for info in day_auth_popu_rank[query_days[j]] %}
                                         <li>
                                             <span class="img-no1 ib"></span>
-                                            <span class="no1 ib">{{info[0]}}</span>
+                                            <span class="no1 ib">{{info[0]|e|truncate(7,True)}}</span>
                                             <span class="number ib">x{{info[1]}}</span>
                                             <span class="sweet ib"></span>
                                         </li>
@@ -160,7 +160,7 @@
                                         {% for info in day_player_room_contribute[query_days[j]] %}
                                         <li>
                                             <span class="img-no1 ib"></span>
-                                            <span class="no1 ib">{{info[0]}}</span>
+                                            <span class="no1 ib">{{info[0]|e|truncate(7,True)}}</span>
                                             <span class="number ib">x{{info[1]}}</span>
                                             <span class="king ib"></span>
                                         </li>
