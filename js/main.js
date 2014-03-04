@@ -1,7 +1,7 @@
 function initConfig(){
     var config = {
         topic_id:1232001,
-        baseUrl: 'http://192.168.11.42:9292/marchactive',
+        baseUrl: 'http://192.168.11.42:8389/marchactive',
         zuijiazhubo: '/zuiJiaZhuPoRanking',
         renqizhubo: '/get_reqizhupo_ranking',
         zuiqiangfensi: '/get_zuiqianfensi_ranking',
@@ -56,6 +56,28 @@ function refreshTip(){
             return false;
         }
     );
+}
+
+function getRequestUrlByTabName(tabName){
+    var path;
+    switch (tabName){
+        case 'nav1':
+            path = config.baseUrl + config.zuijiazhubo;
+            break;
+        case 'nav2':
+            path = config.baseUrl + config.renqizhubo;
+            break;
+        case 'nav3':
+            path = config.baseUrl + config.zuiqiangfensi;
+            break;
+        case 'nav4':
+            path = config.baseUrl + config.zuijiazhubozongbang;
+            break;
+        case 'nav5':
+            path = config.baseUrl + config.fensigongxianbang;
+            break;
+    }
+    return path;
 }
 
 // 点击圈圈，显示已经完成任务和正在进行任务的贡献榜
@@ -143,12 +165,29 @@ function fetchRankingLeftList(tabName, url){
         });
 }
 
-function fetchRankingRightListByUid(uid){
-
+function fetchRankingRightListByUid(tabName, uid){
+    var url = getRequestUrlByTabName(tabName);
+    $.ajax({
+        type: 'GET',
+        url: url,
+        data: data,
+        dataType: 'json',
+        success: function(data){
+            var friend = data.users;
+            var rightPanel = $(".total-rank-panel .active .panel-right");
+            for(var i = 1; i <= friend.length; i++)
+            {
+                rightPanel.find('.exponent'+i+' p').text(friend[i-1].playerName);
+                rightPanel.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
+            }
+        },
+        error: function(error){
+            console.log("fetching "+tabName+" data error --> "+data.reason);
+        }
+    });
 }
 
 $(function() {
-
 	var element = $(".tabnav");
 	element.find("li a").bind("click", function() {
 		// 从列表项中添加或删除active类
@@ -196,83 +235,22 @@ $(function() {
         $(this).addClass("active");
 
         var tabName = $(this).attr("id");
+        var path = getRequestUrlByTabName(tabName);
         // 获取所点击的榜的数据
-        var path = '';
-        switch (tabName){
-            case 'nav1':
-				path = config.baseUrl + config.zuijiazhubo;
-				break;
-            case 'nav2':
-				path = config.baseUrl + config.renqizhubo;
-				break;
-            case 'nav3':
-				path = config.baseUrl + config.zuiqiangfensi;
-				break;
-            case 'nav4':
-				path = config.baseUrl + config.zuijiazhubozongbang;
-				break;
-            case 'nav5':
-				path = config.baseUrl + config.fensigongxianbang;
-				break;
-        }
-
         fetchRankingLeftList(tabName, path);
-
-        $(".total-rank-panel>[class]").removeClass("active");
-        $(".total-rank-panel>[class='" + tabName + "']").addClass("active");
-
-        var leftPanel = $('.total-rank-panel .active .panel-left ul');
-        leftPanel.find("li a").bind("click", function(){
-            leftPanel.find("li a").removeClass("active");
-            $(this).addClass("active");
-			//默认点击列表第一项
-			var path;
-			//点击主播加载主播甜蜜指数排行
-			switch (tabName){
-				case 'nav1':
-					data['uid'] = users[0].uid;
-					path = "getAuthFriends/";
-					break;
-				case 'nav2':
-					data['uid'] = users[1].uid;
-					path = "getAuthFriends/";
-					break;
-				case 'nav3':
-					data['uid'] = users[2].uid;
-					path = "getAuthFriends/";
-					break;
-				case 'nav4':
-					data = {uid: users[3].uid};
-					path = "getAuthAllFriends/";
-					break;
-				case 'nav5':
-					data['uid'] = users[4].uid;
-					path = "getAuthFriends/";
-					break;
-			}
-            // refresh right panel
-            $.ajax({
-                type: 'GET',
-                url: 'http://192.168.11.42:9292/marchactive/'+path,
-                data: data,
-                dataType: 'json',
-                success: function(data){
-					var friend = data.users;
-					var rightPanel = $(".total-rank-panel .active .panel-right");
-					for(var i = 1; i <= friend.length; i++)
-					{
-						rightPanel.find('.exponent'+i+' p').text(friend[i-1].playerName);
-						rightPanel.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
-					}
-                },
-                error: function(error){
-
-                }
-            });
-        });
-		
     });
-	
+
+    var leftPanel = $('.total-rank-panel .active .panel-left ul');
+    leftPanel.find("li a").bind("click", function(){
+        leftPanel.find("li a").removeClass("active");
+        $(this).addClass("active");
+
+        var tabName = $('.total-rank-header ul li a.active').attr("id");
+        var uid = '';
+        //点击主播加载主播甜蜜指数排行
+        fetchRankingRightListByUid(tabName, uid);
+    });
+
 	//默认点击第一项（活动最佳主播）
 	$(".total-rank-header ul li a#nav1").trigger("click");
 });
