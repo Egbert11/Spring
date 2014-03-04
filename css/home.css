@@ -571,3 +571,9 @@ p.task-status {
     padding: 10px 10px;
     z-index: 5;
 }
+
+.star-number {
+    position: relative;
+    top: 89px;
+    left: 18px;
+}

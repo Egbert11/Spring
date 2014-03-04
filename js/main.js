@@ -29,173 +29,6 @@ $(function() {
 
     $('#meet').trigger("click");
 	
-	// 显示当前日期所属阶段
-	var currentDate = new Date();
-	var year = currentDate.getFullYear();  //当前年份：2014
-	var month = currentDate.getMonth();    //当前月份：0-11
-	var day = currentDate.getDate();       //当前日期：1-31
-	var meeting = $(".task-meeting");
-	var season = $(".task-season");
-	var dating = $(".task-dating");
-	if (year == 2014 && month == 2) {
-		switch(day){
-			case 5:
-				meeting.find("[name='1']").addClass("processing");
-				break;
-			case 6:
-				meeting.find("[name='1']").addClass("finishing");
-				meeting.find("[name='2']").addClass("processing");
-				break;
-			case 7:
-				meeting.find("[name='1']").addClass("finishing");
-				meeting.find("[name='2']").addClass("finishing");
-				meeting.find("[name='3']").addClass("processing");
-				break;
-			case 8:
-				meeting.find("[name='1']").addClass("finishing");
-				meeting.find("[name='2']").addClass("finishing");
-				meeting.find("[name='3']").addClass("finishing");
-				meeting.find("[name='4']").addClass("processing");
-				break;
-			case 9:
-				meeting.find("[name='1']").addClass("finishing");
-				meeting.find("[name='2']").addClass("finishing");
-				meeting.find("[name='3']").addClass("finishing");
-				meeting.find("[name='4']").addClass("finishing");
-				meeting.find("[name='5']").addClass("processing");
-				break;
-			case 10:
-				meeting.find("[name='1']").addClass("finishing");
-				meeting.find("[name='2']").addClass("finishing");
-				meeting.find("[name='3']").addClass("finishing");
-				meeting.find("[name='4']").addClass("finishing");
-				meeting.find("[name='5']").addClass("finishing");
-				meeting.find("[name='6']").addClass("processing");
-				break;
-			case 11:
-				meeting.find("[name='1']").addClass("finishing");
-				meeting.find("[name='2']").addClass("finishing");
-				meeting.find("[name='3']").addClass("finishing");
-				meeting.find("[name='4']").addClass("finishing");
-				meeting.find("[name='5']").addClass("finishing");
-				meeting.find("[name='6']").addClass("finishing");
-				meeting.find("[name='7']").addClass("processing");
-				break;
-			case 12:
-				meeting.find("a").addClass("finishing");
-				season.find("[name='1']").addClass("processing");
-				break;
-			case 13:
-				meeting.find("a").addClass("finishing");
-				season.find("[name='1']").addClass("finishing");
-				season.find("[name='2']").addClass("processing");
-				break;
-			case 14:
-				meeting.find("a").addClass("finishing");
-				season.find("[name='1']").addClass("finishing");
-				season.find("[name='2']").addClass("finishing");
-				season.find("[name='3']").addClass("processing");
-				break;
-			case 15:
-				meeting.find("a").addClass("finishing");
-				season.find("[name='1']").addClass("finishing");
-				season.find("[name='2']").addClass("finishing");
-				season.find("[name='3']").addClass("finishing");
-				season.find("[name='4']").addClass("processing");
-				break;
-			case 16:
-				meeting.find("a").addClass("finishing");
-				season.find("[name='1']").addClass("finishing");
-				season.find("[name='2']").addClass("finishing");
-				season.find("[name='3']").addClass("finishing");
-				season.find("[name='4']").addClass("finishing");
-				season.find("[name='5']").addClass("processing");
-				break;
-			case 17:
-				meeting.find("a").addClass("finishing");
-				season.find("[name='1']").addClass("finishing");
-				season.find("[name='2']").addClass("finishing");
-				season.find("[name='3']").addClass("finishing");
-				season.find("[name='4']").addClass("finishing");
-				season.find("[name='5']").addClass("finishing");
-				season.find("[name='6']").addClass("processing");
-				break;
-			case 18:
-				meeting.find("a").addClass("finishing");
-				season.find("[name='1']").addClass("finishing");
-				season.find("[name='2']").addClass("finishing");
-				season.find("[name='3']").addClass("finishing");
-				season.find("[name='4']").addClass("finishing");
-				season.find("[name='5']").addClass("finishing");
-				season.find("[name='6']").addClass("finishing");
-				season.find("[name='7']").addClass("processing");
-				break;
-			case 19:
-				meeting.find("a").addClass("finishing");
-				season.find("a").addClass("finishing");
-				dating.find("[name='1']").addClass("processing");
-				break;
-			case 20:
-				meeting.find("a").addClass("finishing");
-				season.find("a").addClass("finishing");
-				dating.find("[name='1']").addClass("finishing");
-				dating.find("[name='2']").addClass("processing");
-				break;
-			case 21:
-				meeting.find("a").addClass("finishing");
-				season.find("a").addClass("finishing");
-				dating.find("[name='1']").addClass("finishing");
-				dating.find("[name='2']").addClass("finishing");
-				dating.find("[name='3']").addClass("processing");
-				break;
-			case 22:
-				meeting.find("a").addClass("finishing");
-				season.find("a").addClass("finishing");
-				dating.find("[name='1']").addClass("finishing");
-				dating.find("[name='2']").addClass("finishing");
-				dating.find("[name='3']").addClass("finishing");
-				dating.find("[name='4']").addClass("processing");
-				break;
-			case 23:
-				meeting.find("a").addClass("finishing");
-				season.find("a").addClass("finishing");
-				dating.find("[name='1']").addClass("finishing");
-				dating.find("[name='2']").addClass("finishing");
-				dating.find("[name='3']").addClass("finishing");
-				dating.find("[name='4']").addClass("finishing");
-				dating.find("[name='5']").addClass("processing");
-				break;
-			case 24:
-				meeting.find("a").addClass("finishing");
-				season.find("a").addClass("finishing");
-				dating.find("[name='1']").addClass("finishing");
-				dating.find("[name='2']").addClass("finishing");
-				dating.find("[name='3']").addClass("finishing");
-				dating.find("[name='4']").addClass("finishing");
-				dating.find("[name='5']").addClass("finishing");
-				dating.find("[name='6']").addClass("processing");
-				break;
-			case 25:
-				meeting.find("a").addClass("finishing");
-				season.find("a").addClass("finishing");
-				dating.find("[name='1']").addClass("finishing");
-				dating.find("[name='2']").addClass("finishing");
-				dating.find("[name='3']").addClass("finishing");
-				dating.find("[name='4']").addClass("finishing");
-				dating.find("[name='5']").addClass("finishing");
-				dating.find("[name='6']").addClass("finishing");
-				dating.find("[name='7']").addClass("processing");
-				break;
-			default:
-				break;
-		}
-	}
-	// 如果活动已过期，将所有状态都设为已完成
-	if (month == 2 && day > 25 || month > 2){
-		meeting.find("a").addClass("finishing");
-		season.find("a").addClass("finishing");
-		dating.find("a").addClass("finishing");
-	}
 	refreshTip();
 	
 	// 解决初次加载总榜点击最佳主播无效的问题
@@ -204,10 +37,7 @@ $(function() {
 		firstLeftPanel.find("li a").removeClass("active");
 		$(this).addClass("active");
     });
-	
-	
-	
-	
+
     // 总榜tab
     var total_rank = $(".total-rank-header ul");
 			//默认点击第一项（活动最佳主播）
@@ -332,7 +162,7 @@ $(function() {
 	
 	//默认点击第一项（活动最佳主播）
 	$(".total-rank-header ul li a#nav1").trigger("click");
-	$(".total-rank-panel .active ul li a#1").trigger("click");
+	//$(".total-rank-panel .active ul li a#1").trigger("click");
 });
 
 
