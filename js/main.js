@@ -7,6 +7,7 @@ function initConfig(){
         zuiqiangfensi: '/get_zuiqianfensi_ranking',
         zuijiazhubozongbang: '/get_zuiJiaZhuPo_all_ranking',
         fensigongxianbang: '/get_zuiqianfensi_all_ranking'
+        allfriends: '/getAuthAllFriends'
     }
     return config;
 }
@@ -80,6 +81,10 @@ function getRequestUrlByTabName(tabName){
     return path;
 }
 
+function getUidUrl(){
+    return path = config.baseUrl + config.allfriends;
+}
+
 // 点击圈圈，显示已经完成任务和正在进行任务的贡献榜
 function showPlayerContribute(day){
     $(".zuijia").find("ul").css({'display':'none'});
@@ -143,7 +148,7 @@ function fetchRankingLeftList(tabName, url){
                             parent.append(li);
                         });
                         // 默认获取第一项列表的数据
-                        var uid = $('.total-rank-panel .active .panel-left ul li a')[0].attr('name');
+                        var uid = $('.total-rank-panel .active .panel-left ul li a:first').attr('name');
                         fetchRankingRightListByUid(tabName, uid);
                     }else{
                         // nav3, nav5
@@ -167,7 +172,8 @@ function fetchRankingLeftList(tabName, url){
 }
 
 function fetchRankingRightListByUid(tabName, uid){
-    var url = getRequestUrlByTabName(tabName);
+    var url = getUidUrl();
+    var data = {uid: uid};
     $.ajax({
         type: 'GET',
         url: url,
