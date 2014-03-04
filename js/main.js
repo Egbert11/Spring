@@ -147,7 +147,7 @@ function fetchRankingLeftList(tabName, url){
                         var parent = $('.total-rank-panel .nav1 .panel-left ul');
                         parent.empty();
                         $.each(data.users, function(index, user){
-                            var li = $('<li><a href="javascript:void(0);"' + ' onclick="fetchRankingRightListByUid(' + tabName + ', user.uid);" class="panel-left-a" title="'+user.nickName+'" name="'+user.uid+'"></a></li>');
+                            var li = $('<li><a href="javascript:void(0);"' + ' onclick="fetchRankingRightListByUid(' + tabName + ', '+ user.uid + ');" class="panel-left-a" title="'+user.nickName+'" name="'+user.uid+'"></a></li>');
                             var username = mySubStr(user.nickName, 16);
                             if(index == 0){
                                 liconcate(li, 'no1', 'no1', user.level, username, tabName);
@@ -161,6 +161,12 @@ function fetchRankingLeftList(tabName, url){
                                 liconcate(li, 'no5', 'no1', user.level, username, tabName);
                             }
                             parent.append(li);
+                        });
+
+                        var leftPanel = $('.panel-left ul');
+                        leftPanel.find("li a").bind("click", function(){
+                            leftPanel.find("li a").removeClass("active");
+                            $(this).addClass("active");
                         });
                         // 默认获取第一项列表的数据
                         var uid = $('.total-rank-panel .active .panel-left ul li a:first').attr('name');
