@@ -6,7 +6,7 @@ function initConfig(){
         renqizhubo: '/get_reqizhupo_ranking',
         zuiqiangfensi: '/get_zuiqianfensi_ranking',
         zuijiazhubozongbang: '/get_zuiJiaZhuPo_all_ranking',
-        fensigongxianbang: '/get_zuiqianfensi_all_ranking'
+        fensigongxianbang: '/get_zuiqianfensi_all_ranking',
         allfriends: '/getAuthAllFriends'
     }
     return config;
