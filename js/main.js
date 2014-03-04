@@ -117,7 +117,7 @@ function showPlayerContribute(day){
     $("#c_showday").val(day);
 }
 
-function liconcate(el, imgno, level, fieldno, username, tabName){
+function liconcate(el, imgno, fieldno, level, username, tabName){
     el.find('a').append('<span class="icon img-'+ imgno +' ib"></span>');
     el.find('a').append('<span class="number ib">'+ level +'</span>');
     if(tabName == 'nav2')
