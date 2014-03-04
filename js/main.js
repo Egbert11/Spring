@@ -149,7 +149,7 @@ function fetchRankingLeftList(tabName, url){
                         parent.empty();
                         $.each(data.users, function(index, user){
                             var li = $('<li><a href="javascript:void(0);"' + ' onclick="fetchRankingRightListByUid(' + tabName + ', '+ user.uid + ');" class="panel-left-a" title="'+user.nickName+'" name="'+user.uid+'"></a></li>');
-                            var username = mySubStr(user.nickName, 16);
+                            var username = mySubStr(user.nickName, 10);
                             if(index == 0){
                                 liconcate(li, 'no1', 'no1', user.level, username, tabName);
                             }else if(index == 1){
@@ -183,7 +183,7 @@ function fetchRankingLeftList(tabName, url){
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
                         {
-                            rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 16));
+                            rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 10));
                             rank.find('.exponent'+i+' span.exp').text(friend[i-1].level);
                         }
                     }else{
@@ -197,7 +197,7 @@ function fetchRankingLeftList(tabName, url){
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
                         {
-                            rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 16));
+                            rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 10));
                             rank.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                         }
                     }
@@ -223,7 +223,7 @@ function fetchRankingRightListByUid(tabName, uid){
                 var rightPanel = $(".total-rank-panel .active .panel-right");
                 for(var i = 1; i <= friend.length; i++)
                 {
-                    rightPanel.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 16));
+                    rightPanel.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 10));
                     rightPanel.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                 }
             }else{
