@@ -63,8 +63,17 @@
                 {% endif %}
                 {% if 2 == i %}
                 <div class="panel" name="dating">
-                    {% endif %}
+                {% endif %}
+
+                {% if 0 == i %}
                 <div class="task-meeting">
+                {% endif %}
+                {% if 1 == i %}
+                <div class="task-season">
+                {% endif %}
+                {% if 2 == i %}
+                <div class="task-dating">
+                {% endif %}
                 {% for j in range(i * 7, i * 7 + 7) %}
                 {% if query_days[j] > endday %}
                     <a class="circle-candy{{j%7 + 1}}" name="dpac_{{query_days[j]}}"></a>

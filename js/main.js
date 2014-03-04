@@ -112,38 +112,37 @@ function fetchRankingLeftList(tabName, url){
 
                         var parent = $('.total-rank-panel .nav1 .panel-left ul');
                         parent.empty();
-                        var temp;
                         $.each(data.users, function(index, user){
                             var li = $('<li><a href="#" class="panel-left-a"></a></li>');
                             if(index == 0){
-                                li.append('<span class="icon img-no1 ib"></span>');
-                                li.append('<span class="number ib">'+ user.level+'</span>');
-                                li.append('<span class="star ib"></span>');
-                                li.append('<span class="field no1 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="icon img-no1 ib"></span>');
+                                li.find('a').append('<span class="number ib">'+ user.level+'</span>');
+                                li.find('a').append('<span class="star ib"></span>');
+                                li.find('a').append('<span class="field no1 ib">'+user.nickName+'</span>');
                             }else if(index == 1){
-                                li.append('<span class="icon img-no2 ib"></span>');
-                                li.append('<span class="number ib">'+ user.level+'</span>');
-                                li.append('<span class="star ib"></span>');
-                                li.append('<span class="field no2 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="icon img-no2 ib"></span>');
+                                li.find('a').append('<span class="number ib">'+ user.level+'</span>');
+                                li.find('a').append('<span class="star ib"></span>');
+                                li.find('a').append('<span class="field no2 ib">'+user.nickName+'</span>');
                             }else if(index == 2){
-                                li.append('<span class="icon img-no3 ib"></span>');
-                                li.append('<span class="number ib">'+ user.level+'</span>');
-                                li.append('<span class="star ib"></span>');
-                                li.append('<span class="field no3 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="icon img-no3 ib"></span>');
+                                li.find('a').append('<span class="number ib">'+ user.level+'</span>');
+                                li.find('a').append('<span class="star ib"></span>');
+                                li.find('a').append('<span class="field no3 ib">'+user.nickName+'</span>');
                             }else if(index == 3){
-                                li.append('<span class="icon img-no4 ib"></span>');
-                                li.append('<span class="number ib">'+ user.level+'</span>');
-                                li.append('<span class="star ib"></span>');
-                                li.append('<span class="field no4 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="icon img-no4 ib"></span>');
+                                li.find('a').append('<span class="number ib">'+ user.level+'</span>');
+                                li.find('a').append('<span class="star ib"></span>');
+                                li.find('a').append('<span class="field no4 ib">'+user.nickName+'</span>');
                             }else if(index == 4){
-                                li.append('<span class="icon img-no5 ib"></span>');
-                                li.append('<span class="number ib">'+ user.level+'</span>');
-                                li.append('<span class="star ib"></span>');
-                                li.append('<span class="field no5 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="icon img-no5 ib"></span>');
+                                li.find('a').append('<span class="number ib">'+ user.level+'</span>');
+                                li.find('a').append('<span class="star ib"></span>');
+                                li.find('a').append('<span class="field no5 ib">'+user.nickName+'</span>');
                             }
-                            temp += li;
+                            parent.append(li);
                         });
-                        parent.append(temp);
+
                     }else{
                         // nav3, nav5
                         $('.total-rank-panel .nav1').removeClass('active');
@@ -250,7 +249,4 @@ $(function() {
         //点击主播加载主播甜蜜指数排行
         fetchRankingRightListByUid(tabName, uid);
     });
-
-	//默认点击第一项（活动最佳主播）
-	$(".total-rank-header ul li a#nav1").trigger("click");
 });
