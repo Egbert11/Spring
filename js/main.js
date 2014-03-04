@@ -1,3 +1,6 @@
+// 定义全局配置变量
+var config;
+
 function initConfig(){
     var topic_id = $('#topcid').attr('value');
     var config = {
@@ -101,9 +104,6 @@ function showPlayerContribute(day){
     $("#c_showday").val(day);
 }
 
-// 初始化配置
-var config = initConfig();
-
 function fetchRankingLeftList(tabName, url){
     $.ajax({
             type: 'GET',
@@ -120,31 +120,32 @@ function fetchRankingLeftList(tabName, url){
                         parent.empty();
                         $.each(data.users, function(index, user){
                             var li = $('<li><a href="#" class="panel-left-a" title="'+user.nickName+'" name="'+user.uid+'"></a></li>');
+                            var username = String.mySubStr(user.nickName, 16);
                             if(index == 0){
                                 li.find('a').append('<span class="icon img-no1 ib"></span>');
                                 li.find('a').append('<span class="number ib">'+ user.level+'</span>');
                                 li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no1 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="field no1 ib">'+username+'</span>');
                             }else if(index == 1){
                                 li.find('a').append('<span class="icon img-no2 ib"></span>');
                                 li.find('a').append('<span class="number ib">'+ user.level+'</span>');
                                 li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no2 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="field no2 ib">'+username+'</span>');
                             }else if(index == 2){
                                 li.find('a').append('<span class="icon img-no3 ib"></span>');
                                 li.find('a').append('<span class="number ib">'+ user.level+'</span>');
                                 li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no3 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="field no3 ib">'+username+'</span>');
                             }else if(index == 3){
                                 li.find('a').append('<span class="icon img-no4 ib"></span>');
                                 li.find('a').append('<span class="number ib">'+ user.level+'</span>');
                                 li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no1 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="field no1 ib">'+username+'</span>');
                             }else if(index == 4){
                                 li.find('a').append('<span class="icon img-no5 ib"></span>');
                                 li.find('a').append('<span class="number ib">'+ user.level+'</span>');
                                 li.find('a').append('<span class="star ib"></span>');
-                                li.find('a').append('<span class="field no1 ib">'+user.nickName+'</span>');
+                                li.find('a').append('<span class="field no1 ib">'+username+'</span>');
                             }
                             parent.append(li);
                         });
@@ -160,7 +161,7 @@ function fetchRankingLeftList(tabName, url){
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
                         {
-                            rank.find('.exponent'+i+' p').text(friend[i-1].nickName);
+                            rank.find('.exponent'+i+' p').text(String.mySubStr(friend[i-1].nickName, 16));
                             rank.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                         }
                     }
@@ -198,6 +199,9 @@ function fetchRankingRightListByUid(tabName, uid){
 }
 
 $(function() {
+
+    config = initConfig();
+
 	var element = $(".tabnav");
 	element.find("li a").bind("click", function() {
 		// 从列表项中添加或删除active类
