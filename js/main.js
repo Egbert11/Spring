@@ -16,6 +16,19 @@ function initConfig(){
     return config;
 }
 
+// 显示当前阶段
+function showCurrentPeroid(){
+    var currentDate = new Date();
+	var day = currentDate.getDate();       //当前日期：1-31
+    if(day <= 11){
+        $('#meet').trigger("click");
+    }else if(day <= 18){
+        $('#season').trigger("click");
+    }else if(day <= 25){
+        $('#dating').trigger("click");
+    }
+}
+
 function refreshTip(){
     // 圈圈任务的提示框
     var active_panel = $("div.panels > div.active");
@@ -187,7 +200,7 @@ function fetchRankingRightListByUid(tabName, uid){
                 var rightPanel = $(".total-rank-panel .active .panel-right");
                 for(var i = 1; i <= friend.length; i++)
                 {
-                    rightPanel.find('.exponent'+i+' p').text(friend[i-1].nickName);
+                    rightPanel.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 16));
                     rightPanel.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                 }
             }else{
