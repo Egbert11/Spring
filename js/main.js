@@ -11,7 +11,7 @@ function initConfig(){
         zuiqiangfensi: '/get_zuiqianfensi_ranking',
         zuijiazhubozongbang: '/get_zuiJiaZhuPo_all_ranking',
         fensigongxianbang: '/get_zuiqianfensi_all_ranking',
-        allfriends: '/getAuthAllFriends'
+        allfriends: '/getAuthFriends'
     }
     return config;
 }
@@ -192,6 +192,8 @@ function fetchRankingLeftList(tabName, url){
                         $('.total-rank-panel .nav2').removeClass('active');
                         $('.total-rank-panel .nav3').addClass('active');
                         var rank = $('.total-rank-panel .nav3 ');
+                        rank.find('p').empty();
+                        rank.find('.exp').empty();
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
                         {
@@ -209,7 +211,7 @@ function fetchRankingLeftList(tabName, url){
 
 function fetchRankingRightListByUid(tabName, uid){
     var url = getUidUrl();
-    var data = {uid: uid};
+    var data = {uid: uid, topic_id:config.topic_id};
     $.ajax({
         type: 'GET',
         url: url,

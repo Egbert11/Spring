@@ -525,7 +525,7 @@ span.img-heart {
 span.img-sweat {
     background: url(../image/sprite-trans.png?eee) no-repeat -37px -275px;
     width: 18px;
-    height: 14px;
+    height: 18px;
 }
 .total-rank-footer {
     height: 55px;

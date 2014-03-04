@@ -118,8 +118,8 @@
                                     {% if query_days[j] in day_auth_rank and day_auth_rank[query_days[j]] %}
                                     {% for info in day_auth_rank[query_days[j]] %}
                                     <li>
-                                        <span class="img-no1 ib"></span>
-                                        <span class="no1 ib">{{info[0]|e|truncate(7, True)}}</span>
+                                        <span class="img-no{{loop.index + 1}} ib"></span>
+                                        <span class="no{{loop.index + 1}} ib">{{info[0]|e|truncate(7, True)}}</span>
                                         <span class="number ib">x{{info[1]}}</span>
                                         <span class="star ib"></span>
                                     </li>
