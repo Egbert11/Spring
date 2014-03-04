@@ -120,7 +120,7 @@ function fetchRankingLeftList(tabName, url){
                         parent.empty();
                         $.each(data.users, function(index, user){
                             var li = $('<li><a href="#" class="panel-left-a" title="'+user.nickName+'" name="'+user.uid+'"></a></li>');
-                            var username = String.mySubStr(user.nickName, 16);
+                            var username = mySubStr(user.nickName, 16);
                             if(index == 0){
                                 li.find('a').append('<span class="icon img-no1 ib"></span>');
                                 li.find('a').append('<span class="number ib">'+ user.level+'</span>');
@@ -161,7 +161,7 @@ function fetchRankingLeftList(tabName, url){
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
                         {
-                            rank.find('.exponent'+i+' p').text(String.mySubStr(friend[i-1].nickName, 16));
+                            rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 16));
                             rank.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                         }
                     }

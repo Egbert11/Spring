@@ -5,7 +5,7 @@ String.prototype.trim = function() {
     return this.replace(/^\s+/g,"").replace(/\s+$/g,"");
 }
 
-String.prototype.mySubStr = function(str, maxlen) {
+function mySubStr(str, maxlen) {
     str = str.trim();
     var len = 0;
     var i;
