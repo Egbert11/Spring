@@ -40,7 +40,10 @@ function mySubStr(str, maxlen) {
             else {
             len += 2;
         }
-        if (len > maxlen) break;
+        if (len > maxlen) 
+		{
+			return str.substring(0, i)+'...';
+		}
     }
     return str.substring(0, i);
 }
