@@ -264,12 +264,6 @@ function fetchRankingRightListByUid(tabName, uid){
     });
 }
 
-function openIntro(url){
-    var external = window.external;
-    external.ICC_OPENURL(url);
-    return false;
-}
-
 $(function() {
 
     config = initConfig();
@@ -335,6 +329,12 @@ $(function() {
 
     limitText();
 
+    $('.intro').click(function(){
+        var external = window.external;
+        external.ICC_OPENURL($(this).attr("href"));
+        return false;
+    });
+
     // 总榜tab
     var total_rank = $(".total-rank-header ul");
     total_rank.find("li a").bind("click", function(){
@@ -347,4 +347,6 @@ $(function() {
         // 获取所点击的榜的数据
         fetchRankingLeftList(tabName, path);
     });
+
+    DD_belatedPNG.fix(".pngFix, .pngFix:hover, .pngFix:active");
 });
