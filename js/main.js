@@ -264,6 +264,12 @@ function fetchRankingRightListByUid(tabName, uid){
     });
 }
 
+function openIntro(url){
+    var external = window.external;
+    external.ICC_OPENURL(url);
+    return false;
+}
+
 $(function() {
 
     config = initConfig();
@@ -328,12 +334,6 @@ $(function() {
 	refreshTip();
 
     limitText();
-
-    $('#intro').click(function(){
-        var external = window.external;
-        external.ICC_OPENURL($(this).attr("href"));
-        return false;
-    });
 
     // 总榜tab
     var total_rank = $(".total-rank-header ul");
