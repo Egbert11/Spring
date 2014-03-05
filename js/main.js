@@ -132,6 +132,14 @@ function liconcate(el, imgno, fieldno, level, username, tabName){
     el.find('a').append('<span class="field '+ fieldno + ' ib">'+username+'</span>');
 }
 
+function clearHideExponent(ele, n){
+    ele.find('p').empty();
+    ele.find('.exp').empty();
+    for(var i = 1; i<=n; i++){
+        ele.find('.exponent'+i).css({'display':'none'});
+    }
+}
+
 function fetchRankingLeftList(tabName, url){
     $.ajax({
             type: 'GET',
@@ -180,9 +188,12 @@ function fetchRankingLeftList(tabName, url){
                         $('.total-rank-panel .nav2').addClass('active');
 
                         var rank = $('.total-rank-panel .nav2 ');
+                        clearHideExponent(rank, 5);
+
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
                         {
+                            rank.find('.exponent'+i).css({'display':'block'});
                             rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 10));
                             rank.find('.exponent'+i+' span.exp').text(friend[i-1].level);
                         }
@@ -192,11 +203,17 @@ function fetchRankingLeftList(tabName, url){
                         $('.total-rank-panel .nav2').removeClass('active');
                         $('.total-rank-panel .nav3').addClass('active');
                         var rank = $('.total-rank-panel .nav3 ');
-                        rank.find('p').empty();
-                        rank.find('.exp').empty();
+                        clearHideExponent(rank, 5);
+
+                        if(tabName == 'nav3')
+                            $('.bg-nav3 .bg-label').val('最强粉丝贡献排行');
+                        if(tabName == 'nav5')
+                            $('.bg-nav3 .bg-label').val('最强粉丝贡献总榜');
+
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
                         {
+                            rank.find('.exponent'+i).css({'display':'block'});
                             rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 10));
                             rank.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                         }
@@ -219,12 +236,13 @@ function fetchRankingRightListByUid(tabName, uid){
         dataType: 'json',
         success: function(data){
             if(data.code == 0){
-                var friend = data.users;
                 var rightPanel = $(".total-rank-panel .active .panel-right");
-                rightPanel.find('p').empty();
-                rightPanel.find('span.exp').empty();
+                clearHideExponent(rightPanel, 3);
+
+                var friend = data.users;
                 for(var i = 1; i <= friend.length; i++)
                 {
+                    rightPanel.find('.exponent'+i).css({'display':'block'});
                     rightPanel.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 10));
                     rightPanel.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                 }
@@ -298,7 +316,13 @@ $(function() {
     // 显示当前阶段
 	showCurrentPeroid();
 	refreshTip();
-	
+
+    $('#intro').click(function(){
+        var external = window.external;
+        external.ICC_OPENURL($(this).attr("href"));
+        return false;
+    });
+
     // 总榜tab
     var total_rank = $(".total-rank-header ul");
     total_rank.find("li a").bind("click", function(){
