@@ -10,6 +10,9 @@
     <script language="javascript" type="text/javascript" src="/static/js/main.js"></script>
     <!--[if lte IE 6]>
     <script language="javascript" type=”text/javascript” src="/static/js/DD_belatedPNG-min.js"></script>
+    <script language="javascript" type="text/javascript">
+        DD_belatedPNG.fix(".pngFix, .pngFix:hover, .pngFix:active");
+    </script>
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
     <!--[if IE 7]>
@@ -104,7 +107,7 @@
                             </span>
                         {% endfor %}
                     {% endif %}
-                    {{topcid}}房间排行榜
+                    本房间排行榜
                     <a class="intro ib" href="http://cc.163.com/2014chunzhiyuehui.html" style="position:relative; font-weight:normal;left:150px;color:#0000c0;text-decoration: underline">活动玩法说明</a>
                 </div>
 

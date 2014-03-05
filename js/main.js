@@ -347,6 +347,4 @@ $(function() {
         // 获取所点击的榜的数据
         fetchRankingLeftList(tabName, path);
     });
-
-    DD_belatedPNG.fix(".pngFix, .pngFix:hover, .pngFix:active");
 });
