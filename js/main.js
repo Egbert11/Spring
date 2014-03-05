@@ -38,7 +38,7 @@ function refreshTip(){
     var active_panel = $("div.panels > div.active");
     active_panel.find("a.finishing").hover(
         function(){
-            var whichCircle = $(this).attr('class').split(' ')[0];
+            var whichCircle = $(this).attr('class').split(' ')[1];
             var circleId = $(this).attr('name');
             switch(whichCircle){
                 case "circle-candy1":
