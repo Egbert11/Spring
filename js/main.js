@@ -11,7 +11,8 @@ function initConfig(){
         zuiqiangfensi: '/get_zuiqianfensi_ranking',
         zuijiazhubozongbang: '/get_zuiJiaZhuPo_all_ranking',
         fensigongxianbang: '/get_zuiqianfensi_all_ranking',
-        allfriends: '/getAuthFriends'
+        allfriends: '/getAuthAllFriends',
+        friends: '/getAuthFriends'
     }
     return config;
 }
@@ -102,8 +103,13 @@ function getRequestUrlByTabName(tabName){
     return path;
 }
 
-function getUidUrl(){
-    return path = config.baseUrl + config.allfriends;
+function getUidUrl(tabName){
+    var path;
+    if(tabName == 'nav1')
+        path = config.baseUrl + config.friends;
+    else if(tabName == 'nav4')
+        path = config.baseUrl + config.allfriends;
+    return path;
 }
 
 // 点击圈圈，显示已经完成任务和正在进行任务的贡献榜
@@ -236,8 +242,12 @@ function fetchRankingLeftList(tabName, url){
 }
 
 function fetchRankingRightListByUid(tabName, uid){
-    var url = getUidUrl();
-    var data = {uid: uid, topic_id:config.topic_id, time: new Date().getTime()};
+    var url = getUidUrl(tabName);
+    var data;
+    if(tabName == 'nav1')
+        data = {uid: uid, topic_id:config.topic_id, time: new Date().getTime()};
+    else if(tabName == 'nav4')
+        data = {uid: uid, time: new Date().getTime()};
     $.ajax({
         type: 'GET',
         url: url,
