@@ -8,12 +8,6 @@
     <script language="javascript" type="text/javascript" src="/static/js/jquery-1.10.2.min.js"></script>
     <script language="javascript" type="text/javascript" src="/static/js/common.js"></script>
     <script language="javascript" type="text/javascript" src="/static/js/main.js"></script>
-    <!--[if IE 6]>
-    <script language="javascript" type="text/javascript" src="/static/js/DD_belatedPNG.js"></script>
-    <script language="javascript" type="text/javascript">
-        DD_belatedPNG.fix(".pngFix, .pngFix:hover, .pngFix:active");
-    </script>
-    <![endif]-->
     <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
     <!--[if IE 7]>
     <script language="javascript" type="text/javascript" src="/static/js/IE7.js"></script>
@@ -25,12 +19,12 @@
 <div class="wrapper">
     <div id="content">
         <ul class="tabnav nostyle">
-            <li><a href="#" id="meet" name="meet" class="active pngFix" ></a></li>
-            <li><a href="#" id="season" name="season" class="pngFix"></a></li>
-            <li><a href="#" id="dating" name="dating" class="pngFix"></a></li>
-            <li><a href="#" id="total-rank" name="total-rank" class="pngFix"></a></li>
+            <li><a href="#" id="meet" name="meet" class="active " ></a></li>
+            <li><a href="#" id="season" name="season" class=""></a></li>
+            <li><a href="#" id="dating" name="dating" class=""></a></li>
+            <li><a href="#" id="total-rank" name="total-rank" class=""></a></li>
         </ul>
-        <div class="top-arrow pngFix"></div>
+        <div class="top-arrow "></div>
         <div class="panels">
             {% if day_star %}
                 {% for day, level in day_star.iteritems()%}
@@ -40,10 +34,10 @@
                         {% if day_player_contribute_rank and day in day_player_contribute_rank and day_player_contribute_rank[day] %}
                         {% for info in day_player_contribute_rank[day] %}
                         <li>
-                            <span class="img-no{{loop.index}} ib pngFix"></span>
+                            <span class="img-no{{loop.index}} ib "></span>
                             <span class="text no{{loop.index}} ib" title="{{info[0]}}">{{info[0]}}</span>
                             <span class="number ib">x{{info[1]}}</span>
-                            <span class="king ib pngFix"></span>
+                            <span class="king ib "></span>
                         </li>
                         {% endfor %}
                         {% else %}
@@ -80,10 +74,10 @@
                 {% endif %}
                 {% for j in range(i * 7, i * 7 + 7) %}
                 {% if query_days[j] > endday %}
-                    <a class="pngFix circle-candy{{j%7 + 1}}" name="dpac_{{query_days[j]}}"></a>
+                    <a class=" circle-candy{{j%7 + 1}}" name="dpac_{{query_days[j]}}"></a>
                 {% endif %}
                 {% if query_days[j] < endday %}
-                    <a class="pngFix circle-candy{{j%7 + 1}} finishing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('{{query_days[j]}}')">
+                    <a class=" circle-candy{{j%7 + 1}} finishing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('{{query_days[j]}}')">
                         {% if day_star and query_days[j] in day_star %}
                         <span class="star-number ib">{{day_star[query_days[j]]}}</span>
                         {% endif %}
@@ -93,7 +87,7 @@
                     </a>
                 {% endif %}
                 {% if query_days[j] == endday %}
-                    <a class="pngFix circle-candy{{j%7 + 1}} processing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('{{query_days[j]}}')"></a>
+                    <a class=" circle-candy{{j%7 + 1}} processing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('{{query_days[j]}}')"></a>
                 {% endif %}
                 {% endfor %}
                 </div>
@@ -113,17 +107,17 @@
 
                 <div class="ranks">
                     <div class="zuijia rank">
-                        <div class="pngFix label"></div>
+                        <div class=" label"></div>
                         {% if day_auth_rank %}
                             {% for j in range(i * 7, i * 7 + 7) %}
                                 <ul class="dpac_{{query_days[j]}}" {% if query_days[j] != showday %} style="display:none;" {% endif %}>
                                     {% if query_days[j] in day_auth_rank and day_auth_rank[query_days[j]] %}
                                     {% for info in day_auth_rank[query_days[j]] %}
                                     <li>
-                                        <span class="pngFix img-no{{loop.index}} ib"></span>
+                                        <span class=" img-no{{loop.index}} ib"></span>
                                         <span class="text no{{loop.index}} ib" title="{{info[0]}}">{{info[0]}}</span>
                                         <span class="number ib">x{{info[1]}}</span>
-                                        <span class="pngFix star ib"></span>
+                                        <span class=" star ib"></span>
                                     </li>
                                     {% endfor %}
                                     {% else %}
@@ -134,17 +128,17 @@
                         {% endif %}
                     </div>
                     <div class="renqi rank">
-                        <div class="pngFix label"></div>
+                        <div class=" label"></div>
                         {% if day_auth_popu_rank %}
                             {% for j in range(i * 7, i * 7 + 7) %}
                                     <ul class="dpac_{{query_days[j]}}" {% if query_days[j] != showday %} style="display:none;" {% endif %}>
                                         {% if query_days[j] in day_auth_popu_rank and day_auth_popu_rank[query_days[j]] %}
                                         {% for info in day_auth_popu_rank[query_days[j]] %}
                                         <li>
-                                            <span class="pngFix img-no{{loop.index}} ib"></span>
+                                            <span class=" img-no{{loop.index}} ib"></span>
                                             <span class="text no{{loop.index}} ib" title="{{info[0]}}">{{info[0]}}</span>
                                             <span class="number ib">x{{info[1]}}</span>
-                                            <span class="pngFix sweet ib"></span>
+                                            <span class=" sweet ib"></span>
                                         </li>
                                         {% endfor %}
                                         {% else %}
@@ -155,17 +149,17 @@
                         {% endif %}
                     </div>
                     <div class="jiechu rank">
-                        <div class="pngFix label"></div>
+                        <div class=" label"></div>
                         {% if day_player_room_contribute %}
                             {% for j in range(i * 7, i * 7 + 7) %}
                                     <ul class="dpac_{{query_days[j]}}" {% if query_days[j] != showday %} style="display:none;" {% endif %}>
                                         {% if query_days[j] in day_player_room_contribute and day_player_room_contribute[query_days[j]] %}
                                         {% for info in day_player_room_contribute[query_days[j]] %}
                                         <li>
-                                            <span class="pngFix img-no{{loop.index}} ib"></span>
+                                            <span class=" img-no{{loop.index}} ib"></span>
                                             <span class="text no{{loop.index}} ib" title="{{info[0]}}">{{info[0]}}</span>
                                             <span class="number ib">x{{info[1]}}</span>
-                                            <span class="pngFix king ib"></span>
+                                            <span class=" king ib"></span>
                                         </li>
                                         {% endfor %}
                                         {% else %}
@@ -182,11 +176,11 @@
             <div class="panel" name="total-rank">
                 <div class="total-rank-header">
                     <ul>
-                        <li><a href="#" class="total-rank-nav pngFix active" id="nav1">活动最佳主播</a></li>
-                        <li><a href="#" class="total-rank-nav pngFix" id="nav2">活动人气主播</a></li>
-                        <li><a href="#" class="total-rank-nav pngFix" id="nav3">最强粉丝榜</a></li>
-                        <li><a href="#" class="total-rank-nav pngFix" id="nav4">最佳主播总榜</a></li>
-                        <li><a href="#" class="total-rank-nav pngFix" id="nav5">粉丝贡献总榜</a></li>
+                        <li><a href="#" class="total-rank-nav  active" id="nav1">活动最佳主播</a></li>
+                        <li><a href="#" class="total-rank-nav " id="nav2">活动人气主播</a></li>
+                        <li><a href="#" class="total-rank-nav " id="nav3">最强粉丝榜</a></li>
+                        <li><a href="#" class="total-rank-nav " id="nav4">最佳主播总榜</a></li>
+                        <li><a href="#" class="total-rank-nav " id="nav5">粉丝贡献总榜</a></li>
                     </ul>
                 </div>
                 <div class="total-rank-panel">
@@ -195,42 +189,42 @@
                         <div class="panel-left">
                             <ul>
                                 <li>
-                                    <a href="#" class="panel-left-a pngFix active">
-                                        <span class="icon img-no1 ib pngFix"></span>
+                                    <a href="#" class="panel-left-a  active">
+                                        <span class="icon img-no1 ib "></span>
                                         <span class="number ib"></span>
-                                        <span class="star ib pngFix"></span>
+                                        <span class="star ib "></span>
                                         <span class="field no1 ib"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="panel-left-a pngFix">
-                                        <span class="icon img-no2 ib pngFix"></span>
+                                    <a href="#" class="panel-left-a ">
+                                        <span class="icon img-no2 ib "></span>
                                         <span class="number ib"></span>
-                                        <span class="star ib pngFix"></span>
+                                        <span class="star ib "></span>
                                         <span class="field no2 ib"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="panel-left-a pngFix">
-                                        <span class="icon img-no3 ib pngFix"></span>
+                                    <a href="#" class="panel-left-a ">
+                                        <span class="icon img-no3 ib "></span>
                                         <span class="number ib"></span>
-                                        <span class="star ib pngFix"></span>
+                                        <span class="star ib "></span>
                                         <span class="field no3 ib"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="panel-left-a pngFix">
-                                        <span class="icon img-no4 ib pngFix"></span>
+                                    <a href="#" class="panel-left-a ">
+                                        <span class="icon img-no4 ib "></span>
                                         <span class="number ib"></span>
-                                        <span class="star ib pngFix"></span>
+                                        <span class="star ib "></span>
                                         <span class="field no1 ib"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="panel-left-a pngFix">
-                                        <span class="icon img-no5 ib pngFix"></span>
+                                    <a href="#" class="panel-left-a ">
+                                        <span class="icon img-no5 ib "></span>
                                         <span class="number ib"></span>
-                                        <span class="star ib pngFix"></span>
+                                        <span class="star ib "></span>
                                         <span class="field no1 ib"></span>
                                     </a>
                                 </li>
@@ -241,7 +235,7 @@
                                 <div class="icon-cc"></div>
                                 <p></p>
                                 <div>
-                                    <span class="ib img-heart pngFix"></span>
+                                    <span class="ib img-heart "></span>
                                     <span class="exp"></span>
                                 </div>
                             </div>
@@ -249,7 +243,7 @@
                                 <div class="icon-cc"></div>
                                 <p></p>
                                 <div>
-                                    <span class="ib img-heart pngFix"></span>
+                                    <span class="ib img-heart "></span>
                                     <span class="exp"></span>
                                 </div>
                             </div>
@@ -257,11 +251,11 @@
                                 <div class="icon-cc"></div>
                                 <p></p>
                                 <div>
-                                    <span class="ib img-heart pngFix"></span>
+                                    <span class="ib img-heart "></span>
                                     <span class="exp"></span>
                                 </div>
                             </div>
-                            <div class="bg-panel-right pngFix"></div>
+                            <div class="bg-panel-right "></div>
                         </div>
                     </div>
                     <div class="nav2">
@@ -269,7 +263,7 @@
                             <div class="icon-cc"></div>
                             <p></p>
                             <div>
-                                <span class="ib img-sweat pngFix"></span>
+                                <span class="ib img-sweat "></span>
                                 <span class="exp"></span>
                             </div>
                         </div>
@@ -277,7 +271,7 @@
                             <div class="icon-cc"></div>
                             <p></p>
                             <div>
-                                <span class="ib img-sweat pngFix"></span>
+                                <span class="ib img-sweat "></span>
                                 <span class="exp"></span>
                             </div>
                         </div>
@@ -285,7 +279,7 @@
                             <div class="icon-cc"></div>
                             <p></p>
                             <div>
-                                <span class="ib img-sweat pngFix"></span>
+                                <span class="ib img-sweat "></span>
                                 <span class="exp"></span>
                             </div>
                         </div>
@@ -293,7 +287,7 @@
                             <div class="icon-cc"></div>
                             <p></p>
                             <div>
-                                <span class="ib img-sweat pngFix"></span>
+                                <span class="ib img-sweat "></span>
                                 <span class="exp"></span>
                             </div>
                         </div>
@@ -301,11 +295,11 @@
                             <div class="icon-cc"></div>
                             <p></p>
                             <div>
-                                <span class="ib img-sweat pngFix"></span>
+                                <span class="ib img-sweat "></span>
                                 <span class="exp"></span>
                             </div>
                         </div>
-                        <div class="bg-nav3 pngFix">
+                        <div class="bg-nav3 ">
                             <span class="bg-label ib">房间人气主播排行</span>
                         </div>
                     </div>
@@ -314,7 +308,7 @@
                             <div class="icon-cc"></div>
                             <p></p>
                             <div>
-                                <span class="ib img-heart pngFix"></span>
+                                <span class="ib img-heart "></span>
                                 <span class="exp"></span>
                             </div>
                         </div>
@@ -322,7 +316,7 @@
                             <div class="icon-cc"></div>
                             <p></p>
                             <div>
-                                <span class="ib img-heart pngFix"></span>
+                                <span class="ib img-heart "></span>
                                 <span class="exp"></span>
                             </div>
                         </div>
@@ -330,7 +324,7 @@
                             <div class="icon-cc"></div>
                             <p></p>
                             <div>
-                                <span class="ib img-heart pngFix"></span>
+                                <span class="ib img-heart "></span>
                                 <span class="exp"></span>
                             </div>
                         </div>
@@ -338,7 +332,7 @@
                             <div class="icon-cc"></div>
                             <p></p>
                             <div>
-                                <span class="ib img-heart pngFix"></span>
+                                <span class="ib img-heart "></span>
                                 <span class="exp"></span>
                             </div>
                         </div>
@@ -346,11 +340,11 @@
                             <div class="icon-cc"></div>
                             <p></p>
                             <div>
-                                <span class="ib img-heart pngFix"></span>
+                                <span class="ib img-heart "></span>
                                 <span class="exp"></span>
                             </div>
                         </div>
-                        <div class="bg-nav3 pngFix">
+                        <div class="bg-nav3 ">
                             <span class="bg-label ib"></span>
                         </div>
                     </div>
