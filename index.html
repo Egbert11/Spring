@@ -39,7 +39,7 @@
                         {% for info in day_player_contribute_rank[day] %}
                         <li>
                             <span class="img-no{{loop.index}} ib"></span>
-                            <span class="no{{loop.index}} ib">{{info[0]|e|truncate(7,True)}}</span>
+                            <span class="text no{{loop.index}} ib">{{info[0]}}</span>
                             <span class="number ib">x{{info[1]}}</span>
                             <span class="king ib"></span>
                         </li>
@@ -106,7 +106,7 @@
                         {% endfor %}
                     {% endif %}
                     {{topcid}}房间排行榜
-                    <a id="intro" class="ib" href="http://cc.163.com/2014chunzhiyuehui.html" style="position:relative; left:150px;color:#2e5305;">活动玩法说明</a>
+                    <a id="intro" class="ib" href="http://cc.163.com/2014chunzhiyuehui.html" style="position:relative; font-weight:normal;left:150px;color:#0000c0;text-decoration: underline">活动玩法说明</a>
                 </div>
 
                 <div class="ranks">
@@ -119,7 +119,7 @@
                                     {% for info in day_auth_rank[query_days[j]] %}
                                     <li>
                                         <span class="img-no{{loop.index}} ib"></span>
-                                        <span class="no{{loop.index}} ib" title="{{info[0]}}">{{info[0]|e|truncate(14, True)}}</span>
+                                        <span class="text no{{loop.index}} ib" title="{{info[0]}}">{{info[0]}}</span>
                                         <span class="number ib">x{{info[1]}}</span>
                                         <span class="star ib"></span>
                                     </li>
@@ -140,7 +140,7 @@
                                         {% for info in day_auth_popu_rank[query_days[j]] %}
                                         <li>
                                             <span class="img-no{{loop.index}} ib"></span>
-                                            <span class="no{{loop.index}} ib" title="{{info[0]}}">{{info[0]|e|truncate(14,True)}}</span>
+                                            <span class="text no{{loop.index}} ib" title="{{info[0]}}">{{info[0]}}</span>
                                             <span class="number ib">x{{info[1]}}</span>
                                             <span class="sweet ib"></span>
                                         </li>
@@ -161,7 +161,7 @@
                                         {% for info in day_player_room_contribute[query_days[j]] %}
                                         <li>
                                             <span class="img-no{{loop.index}} ib"></span>
-                                            <span class="no{{loop.index}} ib" title="{{info[0]}}">{{info[0]|e|truncate(14,True)}}</span>
+                                            <span class="text no{{loop.index}} ib" title="{{info[0]}}">{{info[0]}}</span>
                                             <span class="number ib">x{{info[1]}}</span>
                                             <span class="king ib"></span>
                                         </li>

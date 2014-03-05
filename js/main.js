@@ -18,9 +18,7 @@ function initConfig(){
 
 // 显示当前阶段
 function showCurrentPeroid(){
-    var showday = $('#c_showday').attr('value');
-    var currentDate = new Date();
-	var day = currentDate.getDate();       //当前日期：1-31
+    var day = parseInt($('#c_showday').attr('value').split('-')[2]);
     if(day <= 11){
         $('#meet').trigger("click");
     }else if(day <= 18){
@@ -122,6 +120,13 @@ function showPlayerContribute(day){
     $("#c_showday").val(day);
 }
 
+function limitText(){
+    $('li >span.text').each(function(){
+        var tmp = mySubStr($(this).text(), 14);
+        $(this).text(tmp);
+    });
+}
+
 function liconcate(el, imgno, fieldno, level, username, tabName){
     el.find('a').append('<span class="icon img-'+ imgno +' ib"></span>');
     el.find('a').append('<span class="number ib">'+ level +'</span>');
@@ -157,7 +162,7 @@ function fetchRankingLeftList(tabName, url){
                         parent.empty();
                         $.each(data.users, function(index, user){
                             var li = $('<li><a href="javascript:void(0);"' + ' onclick="fetchRankingRightListByUid(' + tabName + ', '+ user.uid + ');" class="panel-left-a" title="'+user.nickName+'" name="'+user.uid+'"></a></li>');
-                            var username = mySubStr(user.nickName, 10);
+                            var username = mySubStr(user.nickName, 14);
                             if(index == 0){
                                 liconcate(li, 'no1', 'no1', user.level, username, tabName);
                             }else if(index == 1){
@@ -189,12 +194,14 @@ function fetchRankingLeftList(tabName, url){
 
                         var rank = $('.total-rank-panel .nav2 ');
                         clearHideExponent(rank, 5);
+                        $('.bg-nav3 .bg-label').text('房间人气主播排行');
 
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
                         {
                             rank.find('.exponent'+i).css({'display':'block'});
-                            rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 10));
+                            rank.find('.exponent'+i+' p').attr('title', friend[i-1].nickName);
+                            rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 14));
                             rank.find('.exponent'+i+' span.exp').text(friend[i-1].level);
                         }
                     }else{
@@ -214,7 +221,8 @@ function fetchRankingLeftList(tabName, url){
                         for(var i = 1; i <= friend.length; i++)
                         {
                             rank.find('.exponent'+i).css({'display':'block'});
-                            rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 10));
+                            rank.find('.exponent'+i+' p').attr('title', friend[i-1].nickName);
+                            rank.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 14));
                             rank.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                         }
                     }
@@ -243,7 +251,8 @@ function fetchRankingRightListByUid(tabName, uid){
                 for(var i = 1; i <= friend.length; i++)
                 {
                     rightPanel.find('.exponent'+i).css({'display':'block'});
-                    rightPanel.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 10));
+                    rightPanel.find('.exponent'+i+' p').attr('title', friend[i-1].nickName);
+                    rightPanel.find('.exponent'+i+' p').text(mySubStr(friend[i-1].nickName, 14));
                     rightPanel.find('.exponent'+i+' span.exp').text(friend[i-1].exp);
                 }
             }else{
@@ -317,6 +326,8 @@ $(function() {
 	showCurrentPeroid();
 	refreshTip();
 
+    limitText();
+    
     $('#intro').click(function(){
         var external = window.external;
         external.ICC_OPENURL($(this).attr("href"));
