@@ -27,3 +27,6 @@ a {
     border: none;
     blur: expression(this.blur());
 }
+a:active {
+    outline: none;
+}

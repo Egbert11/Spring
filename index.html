@@ -9,12 +9,12 @@
     <script language="javascript" type="text/javascript" src="/static/js/common.js"></script>
     <script language="javascript" type="text/javascript" src="/static/js/main.js"></script>
     <!--[if lte IE 6]>
-    <link rel="stylesheet" type="text/css" href="css/ie6.css"/>
-    <script language="javascript" type=”text/javascript” src="js/iepngfix_tilebg.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/ie6.css"/>
+    <script language="javascript" type=”text/javascript” src="/static/js/iepngfix_tilebg.js"></script>
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="/static/css/main.css"/>
     <!--[if IE 7]>
-    <script language="javascript" type="text/javascript" src="js/IE7.js"></script>
+    <script language="javascript" type="text/javascript" src="/static/js/IE7.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -39,7 +39,7 @@
                         {% for info in day_player_contribute_rank[day] %}
                         <li>
                             <span class="img-no{{loop.index}} ib"></span>
-                            <span class="text no{{loop.index}} ib">{{info[0]}}</span>
+                            <span class="text no{{loop.index}} ib" title="{{info[0]}}">{{info[0]}}</span>
                             <span class="number ib">x{{info[1]}}</span>
                             <span class="king ib"></span>
                         </li>
