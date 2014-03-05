@@ -206,9 +206,9 @@ function fetchRankingLeftList(tabName, url){
                         clearHideExponent(rank, 5);
 
                         if(tabName == 'nav3')
-                            $('.bg-nav3 .bg-label').val('最强粉丝贡献排行');
+                            $('.bg-nav3 .bg-label').text('最强粉丝贡献排行');
                         if(tabName == 'nav5')
-                            $('.bg-nav3 .bg-label').val('最强粉丝贡献总榜');
+                            $('.bg-nav3 .bg-label').text('最强粉丝贡献总榜');
 
                         var friend = data.users;
                         for(var i = 1; i <= friend.length; i++)
