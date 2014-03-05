@@ -18,7 +18,8 @@ function initConfig(){
 
 // 显示当前阶段
 function showCurrentPeroid(){
-    var day = parseInt($('#c_showday').attr('value').split('-')[2]);
+    var showday = $('#c_showday').val();
+    var day = parseInt(showday.split('-')[2]);
     if(day <= 11){
         $('#meet').trigger("click");
     }else if(day <= 18){
@@ -27,7 +28,7 @@ function showCurrentPeroid(){
         $('#dating').trigger("click");
     }
 
-    if(currentDate.Format("yyyy-MM-dd") == showday){
+    if(new Date().Format("yyyy-MM-dd") == showday){
         showPlayerContribute(showday);
     }
 }
@@ -327,7 +328,7 @@ $(function() {
 	refreshTip();
 
     limitText();
-    
+
     $('#intro').click(function(){
         var external = window.external;
         external.ICC_OPENURL($(this).attr("href"));

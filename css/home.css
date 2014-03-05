@@ -450,6 +450,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 47px;
     text-align: center;
     display: none;
+    z-index: 5;
 }
 .exponent2 {
     width: 112px;
@@ -459,6 +460,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 95px;
     text-align: center;
     display: none;
+    z-index: 5;
 }
 .exponent3 {
     width: 112px;
@@ -468,6 +470,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 112px;
     text-align: center;
     display: none;
+    z-index: 5;
 }
 .nav2 .exponent1,
 .nav3 .exponent1 {
@@ -478,6 +481,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 70px;
     text-align: center;
     display: none;
+    z-index: 5;
 }
 .nav2 .exponent2,
 .nav3 .exponent2 {
@@ -488,6 +492,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 118px;
     text-align: center;
     display: none;
+    z-index: 5;
 }
 .nav2 .exponent3,
 .nav3 .exponent3 {
@@ -498,6 +503,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 135px;
     text-align: center;
     display: none;
+    z-index: 5;
 }
 .nav2 .exponent4,
 .nav3 .exponent4 {
@@ -508,6 +514,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 165px;
     text-align: center;
     display: none;
+    z-index: 5;
 }
 .nav2 .exponent5,
 .nav3 .exponent5 {
@@ -518,6 +525,7 @@ div.nav1 .panel-right .bg-panel-right{
     top: 178px;
     text-align: center;
     display: none;
+    z-index: 5;
 }
 div.icon-cc {
     background: url(../image/sprite-trans.png?eee) no-repeat -158px -279px;
