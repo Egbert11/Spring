@@ -59,16 +59,17 @@ function updateFinishingCircleSrc(){
 		"http://c.cotton.netease.com/buckets/2bQIVn/files/OVdc2yY",
 		"http://c.cotton.netease.com/buckets/2bQIVn/files/OHhAxUK"
 	];
-	var month = Date.getMonth();
-	var day = Data.getDay();
+	var date = new Date();
+	var month = date.getMonth();
+	var day = date.getDate();
 	if ( month == 2 ) {
 		for(var i = 5;i < day; i++)
 		{
 			if (i < 10) {
-				$("a.finishing[name='dpac_2014_03_0"+ i +"'] .gift").attr('src',imgSrc[i-5]);
+				$("a.finishing[name='dpac_2014-03-0"+ i +"'] .gift").attr('src',imgSrc[i-5]);
 			}
 			else {
-				$("a.finishing[name='dpac_2014_03_"+ i +"'] .gift").attr('src',imgSrc[i-5]);
+				$("a.finishing[name='dpac_2014-03-"+ i +"'] .gift").attr('src',imgSrc[i-5]);
 			}
 		}
 	}
@@ -76,10 +77,10 @@ function updateFinishingCircleSrc(){
 		for(var i = 5;i <= 25; i++)
 		{
 			if (i < 10) {
-				$("a.finishing[name='dpac_2014_03_0"+ i +"'] .gift").attr('src',imgSrc[i-5]);
+				$("a.finishing[name='dpac_2014-03-0"+ i +"'] .gift").attr('src',imgSrc[i-5]);
 			}
 			else {
-				$("a.finishing[name='dpac_2014_03_"+ i +"'] .gift").attr('src',imgSrc[i-5]);
+				$("a.finishing[name='dpac_2014-03-"+ i +"'] .gift").attr('src',imgSrc[i-5]);
 			}
 		}
 	}
