@@ -79,6 +79,7 @@
                 {% if query_days[j] < endday %}
                     <a class=" circle-candy{{j%7 + 1}} finishing" name="dpac_{{query_days[j]}}"  href="javascript:void(0);" onclick="showPlayerContribute('{{query_days[j]}}')">
                         {% if day_star and query_days[j] in day_star %}
+                        <img class="gift" src=""/>
                         <span class="star-number ib">{{day_star[query_days[j]]}}</span>
                         {% endif %}
                         {% if not day_star or query_days[j] not in day_star %}

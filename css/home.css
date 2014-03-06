@@ -612,3 +612,8 @@ p.task-status {
     position: relative;
     top: 74px;
 }
+img.gift {
+    position: relative;
+    top: 30px;
+    left: 26px;
+}
