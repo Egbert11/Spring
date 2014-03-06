@@ -34,6 +34,57 @@ function showCurrentPeroid(){
     }
 }
 
+//根据完成了的任务设置相应圆圈img的src
+function updateFinishingCircleSrc(){
+	var imgSrc = [
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OWsnsLD",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OWsnvDV",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/ONjEbaT",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OXYMiVT",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OHh8Wd9",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OHh4jt0",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OHhABSK",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/ONjEjaG",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OKbe82p",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OKUiEgo",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OWsnpV7",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/ONjE8Rs",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/ONjEFx2",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OWsnmza",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/ONjF7Qp",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OHhBuGy",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OVdc5tk",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OVdc0Db",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OVdbrbU",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OVdc2yY",
+		"http://c.cotton.netease.com/buckets/2bQIVn/files/OHhAxUK"
+	];
+	var month = Date.getMonth();
+	var day = Data.getDay();
+	if ( month == 2 ) {
+		for(var i = 5;i < day; i++)
+		{
+			if (i < 10) {
+				$("a.finishing[name='dpac_2014_03_0"+ i +"'] .gift").attr('src',imgSrc[i-5]);
+			}
+			else {
+				$("a.finishing[name='dpac_2014_03_"+ i +"'] .gift").attr('src',imgSrc[i-5]);
+			}
+		}
+	}
+	else {
+		for(var i = 5;i <= 25; i++)
+		{
+			if (i < 10) {
+				$("a.finishing[name='dpac_2014_03_0"+ i +"'] .gift").attr('src',imgSrc[i-5]);
+			}
+			else {
+				$("a.finishing[name='dpac_2014_03_"+ i +"'] .gift").attr('src',imgSrc[i-5]);
+			}
+		}
+	}
+}
+
 function refreshTip(){
     // 圈圈任务的提示框
     var active_panel = $("div.panels > div.active");
@@ -332,7 +383,9 @@ $(function() {
         }
         refreshTip();
 	});
-
+	
+	//更改已完成任务圆圈的图像
+	updateFinishingCircleSrc();
     // 显示当前阶段
 	showCurrentPeroid();
 	refreshTip();
